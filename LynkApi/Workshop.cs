@@ -12,6 +12,7 @@ namespace LynkApi
         public int LocationId { get; set; }
         public string? BackOfficeWorkshopId { get; set; }
         public string? DisplayName { get; set; }
+        public string? Time_Zone { get; set; } // lade till timezone
 
     }
 }
