@@ -1,0 +1,15 @@
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\LynkApi.exe
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\LynkApi.deps.json
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\LynkApi.runtimeconfig.json
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\LynkApi.dll
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\LynkApi.pdb
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.csproj.AssemblyReference.cache
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.AssemblyInfoInputs.cache
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.AssemblyInfo.cs
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.csproj.CoreCompileInputs.cache
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.dll
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\refint\LynkApi.dll
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.pdb
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.genruntimeconfig.cache
+C:\Users\wiha\Source\Repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\ref\LynkApi.dll
