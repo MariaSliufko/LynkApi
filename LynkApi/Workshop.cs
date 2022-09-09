@@ -1,17 +1,34 @@
-﻿using System;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LynkApi
+namespace LynkProject
 {
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+    //Root myDeserializedClass = JsonConvert.DeserializeObject<Workshop>(result);
     public class Workshop
     {
-        public int Id { get; set; } //guid ger ett unikt id
-        public int LocationId { get; set; }
+        [JsonProperty("location_id")]
+        public string? LocationId { get; set; }
+
+        [JsonProperty("back_office_workshop_id")]
         public string? BackOfficeWorkshopId { get; set; }
+
+        [JsonProperty("display_name")]
         public string? DisplayName { get; set; }
-        public string? Time_Zone { get; set; } // lade till timezone
+
+        [JsonProperty("time_zone")]
+        public string? TimeZone { get; set; }
     }
+
+    //public class Root
+    //{
+    //    [JsonProperty("items")]
+    //    public List<Workshop>? Workshops { get; set; }
+    //}
+
+
 }
