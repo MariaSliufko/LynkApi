@@ -25,7 +25,7 @@ using (var client = new HttpClient())
         var token = "y2TpY8nt029M~OC3NdK7tXnpF";
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token); // en http har alltid en header, och den kan man fylla med värden, variabler med vad som helst, se headern som ett json objekt som man kan fylla med vad man vill
 
-        var result = client.SendAsync(request).Result; //skicka med http //Ska vara await?
+        var result = client.SendAsync(request).Result; //Ska vara await?
         Console.WriteLine(result);
         Console.ReadLine();
 
