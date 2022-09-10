@@ -48,11 +48,11 @@ using (var client = new HttpClient())
         Console.WriteLine(e);
 
     }
-    //finally 
-    //{
-    //    //disposa httpClient
-    //    httpClient.Dispose();
-    //}
+    finally 
+    {
+        //disposa httpClient
+        client.Dispose();
+    }
 
 
 

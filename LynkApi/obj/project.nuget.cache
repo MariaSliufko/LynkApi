@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "n6KcJVMT4m8cYOWx6cUzQGW32clqSOEry5/9cxPweZW2zi/tnD0MqfWR2160VqqDUt6M3srkIV37IZirswh4iQ==",
+  "dgSpecHash": "piRH8bdG5zg9DdgANw444512OufqOz9ANSh8hQWQK8Wslw8oaee73kkkernorVtAcu61DYhd5/+JzYy9Z8HN/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wiha\\source\\repos\\MariaSliufko\\LynkApi\\LynkApi\\LynkApi.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\masl\\Source\\Repos\\LynkApi\\LynkApi\\LynkApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\masl\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
