@@ -2,6 +2,7 @@ using System.Net.Http.Headers;
 using System.Net.Http;
 using Newtonsoft.Json;
 using LynkApi;
+using System.IO;
 
 
 
@@ -24,12 +25,14 @@ using (var client = new HttpClient())
         
         string json = result.Content.ReadAsStringAsync().Result;
         
-        var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json); // 
+        var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json); 
         
         //skriv ut array med objecten med foreach loop
         foreach (var workshop in myWorkshops.workshops)
         {
             Console.WriteLine($"[{workshop.LocationId}, {workshop.BackOfficeWorkshopId}, {workshop.DisplayName}, {workshop.TimeZone} ");
+            //spara datan i txt fil workshopexamples
+            File.WriteAllTextAsync(@"C:\Users\masl\Source\Repos\LynkApi\LynkApi\Workshopexamples.txt", json);
 
         }
 
