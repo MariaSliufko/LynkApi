@@ -24,11 +24,12 @@ namespace LynkProject
         public string? TimeZone { get; set; }
     }
 
-    //public class Root
-    //{
-    //    [JsonProperty("items")]
-    //    public List<Workshop>? Workshops { get; set; }
-    //}
+    public class WorkshopJSON //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
+    {
+        [JsonProperty("items")]
+        public List<Workshop>? workshops { get; set; }
+    }
+    //items innehåller en lista med propertys från klassen workshop.
 
 
 }
