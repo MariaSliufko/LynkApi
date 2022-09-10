@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LynkProject
+namespace LynkApi
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     //Root myDeserializedClass = JsonConvert.DeserializeObject<Workshop>(result);
