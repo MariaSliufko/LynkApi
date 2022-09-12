@@ -11,7 +11,7 @@
         "projectName": "LynkApi",
         "projectPath": "C:\\Users\\wiha\\source\\repos\\MariaSliufko\\LynkApi\\LynkApi\\LynkApi.csproj",
         "packagesPath": "C:\\Users\\wiha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wiha\\Source\\Repos\\MariaSliufko\\LynkApi\\LynkApi\\obj\\",
+        "outputPath": "C:\\Users\\wiha\\source\\repos\\MariaSliufko\\LynkApi\\LynkApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\wiha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
