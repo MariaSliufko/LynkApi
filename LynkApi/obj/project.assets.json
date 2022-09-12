@@ -52,24 +52,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\masl\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\wiha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\masl\\Source\\Repos\\LynkApi\\LynkApi\\LynkApi.csproj",
+      "projectUniqueName": "C:\\Users\\wiha\\Source\\Repos\\MariaSliufko\\LynkApi\\LynkApi\\LynkApi.csproj",
       "projectName": "LynkApi",
-      "projectPath": "C:\\Users\\masl\\Source\\Repos\\LynkApi\\LynkApi\\LynkApi.csproj",
-      "packagesPath": "C:\\Users\\masl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\masl\\Source\\Repos\\LynkApi\\LynkApi\\obj\\",
+      "projectPath": "C:\\Users\\wiha\\Source\\Repos\\MariaSliufko\\LynkApi\\LynkApi\\LynkApi.csproj",
+      "packagesPath": "C:\\Users\\wiha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\wiha\\Source\\Repos\\MariaSliufko\\LynkApi\\LynkApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\masl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\wiha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -77,7 +72,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
