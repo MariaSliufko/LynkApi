@@ -30,3 +30,13 @@ C:\Users\masl\Source\Repos\LynkApi\LynkApi\obj\Debug\net6.0\refint\LynkApi.dll
 C:\Users\masl\Source\Repos\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.pdb
 C:\Users\masl\Source\Repos\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.genruntimeconfig.cache
 C:\Users\masl\Source\Repos\LynkApi\LynkApi\obj\Debug\net6.0\ref\LynkApi.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Coravel.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
