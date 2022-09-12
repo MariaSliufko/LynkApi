@@ -1,0 +1,198 @@
+{
+  "items": [
+    {
+      "location_id": "115",
+      "back_office_workshop_id": "SEAAM0125",
+      "display_name": " General B2 JOHAN AHLBERG BIL AB"
+    },
+    {
+      "location_id": "1508",
+      "back_office_workshop_id": "BEHEK0010",
+      "display_name": " NV GARAGE RUTTEN"
+    },
+    {
+      "location_id": "1507",
+      "back_office_workshop_id": "ESBCN0023",
+      "display_name": " RONDA 15"
+    },
+    {
+      "location_id": "1505",
+      "back_office_workshop_id": "NLLIJ0010",
+      "display_name": " STERN 4V LIJNDEN"
+    },
+    {
+      "location_id": "1506",
+      "back_office_workshop_id": "FRSOL0010",
+      "display_name": "ABVV AUTOMOBILES"
+    },
+    {
+      "location_id": "1502",
+      "back_office_workshop_id": "DEHAM0015",
+      "display_name": "AMC KRUELL GMBH"
+    },
+    {
+      "location_id": "1503",
+      "back_office_workshop_id": "DEMUC0018",
+      "display_name": "AUTOHAUS AM GOETHEPLATZ KARL BAUER"
+    },
+    {
+      "location_id": "942",
+      "back_office_workshop_id": "DEFRA0013",
+      "display_name": "AUTOHAUS HESSENGARAGE GMBH",
+      "time_zone": "Asia/Kuwait"
+    },
+    {
+      "location_id": "109",
+      "back_office_workshop_id": "NLAMS0010",
+      "display_name": "BANGARAGE AMSTERDAM ZUID OOST"
+    },
+    {
+      "location_id": "1504",
+      "back_office_workshop_id": "SESTO0484",
+      "display_name": "BILIA PERSONBILAR AB  HAGA NORRA"
+    },
+    {
+      "location_id": "797",
+      "back_office_workshop_id": "SEMMA0148",
+      "display_name": "BILIA PERSONBILAR AB J\u00C4GERSRO",
+      "time_zone": "Asia/Barnaul"
+    },
+    {
+      "location_id": "1301",
+      "back_office_workshop_id": "ESMAD0109",
+      "display_name": "Battinver"
+    },
+    {
+      "location_id": "108",
+      "back_office_workshop_id": "SEGOT0292",
+      "display_name": "Bilia Sisj\u00F6n"
+    },
+    {
+      "location_id": "1300",
+      "back_office_workshop_id": "ITROM0033",
+      "display_name": "C.A.R Room SRL"
+    },
+    {
+      "location_id": "603",
+      "back_office_workshop_id": "FRMTV0010",
+      "display_name": "Elysee 77"
+    },
+    {
+      "location_id": "132",
+      "back_office_workshop_id": "EC1",
+      "display_name": "Engagement Center"
+    },
+    {
+      "location_id": "1424",
+      "back_office_workshop_id": "ITAST0012",
+      "display_name": "Gino SPA"
+    },
+    {
+      "location_id": "4",
+      "back_office_workshop_id": "HJ_TEST",
+      "display_name": "HJ_TEST"
+    },
+    {
+      "location_id": "1774",
+      "back_office_workshop_id": "BEZEE1050",
+      "display_name": "LCC Belgium",
+      "time_zone": "GMT\u002B0"
+    },
+    {
+      "location_id": "1773",
+      "back_office_workshop_id": "FRNHD0040",
+      "display_name": "LCC France",
+      "time_zone": "GMT\u002B0"
+    },
+    {
+      "location_id": "1775",
+      "back_office_workshop_id": "ITAGN0001",
+      "display_name": "LCC Italy",
+      "time_zone": "GMT\u002B0"
+    },
+    {
+      "location_id": "1772",
+      "back_office_workshop_id": "NLOOS0040",
+      "display_name": "LCC Netherlands",
+      "time_zone": "GMT\u002B0"
+    },
+    {
+      "location_id": "1776",
+      "back_office_workshop_id": "ESSDR0001",
+      "display_name": "LCC Spain",
+      "time_zone": "GMT\u002B0"
+    },
+    {
+      "location_id": "1771",
+      "back_office_workshop_id": "SEGOT0001",
+      "display_name": "LCC Sweden",
+      "time_zone": "GMT\u002B0"
+    },
+    {
+      "location_id": "1449",
+      "back_office_workshop_id": "ITCCZ0010",
+      "display_name": "Lario Bergauto",
+      "time_zone": "Europe/Stockholm"
+    },
+    {
+      "location_id": "1",
+      "back_office_workshop_id": "LINDHOLMEN2",
+      "display_name": "Lindholem MCC"
+    },
+    {
+      "location_id": "2",
+      "back_office_workshop_id": "LINDHOLMEN1",
+      "display_name": "Lindholmen RCC"
+    },
+    {
+      "location_id": "579",
+      "back_office_workshop_id": "SEJKG0305",
+      "display_name": "Nybergs Bil J\u00F6nk\u00F6ping"
+    },
+    {
+      "location_id": "5",
+      "back_office_workshop_id": "SEAOV0455",
+      "display_name": "OTD_test_hj"
+    },
+    {
+      "location_id": "2013",
+      "back_office_workshop_id": "TEST1",
+      "display_name": "Test1_WS"
+    },
+    {
+      "location_id": "26",
+      "back_office_workshop_id": "Tomas_Wow",
+      "display_name": "Tomas Stora Verkstad"
+    },
+    {
+      "location_id": "1450",
+      "back_office_workshop_id": "BEECH0011",
+      "display_name": "VERMANT MECHELEN"
+    },
+    {
+      "location_id": "89",
+      "back_office_workshop_id": "MI0001",
+      "display_name": "WARRANTY - MI0001"
+    },
+    {
+      "location_id": "86",
+      "back_office_workshop_id": "Mi0001",
+      "display_name": "WARRANTY - Mi0001"
+    },
+    {
+      "location_id": "3",
+      "back_office_workshop_id": "BEZEE1040",
+      "display_name": "ZEEBRUGGE RCC"
+    },
+    {
+      "location_id": "1997",
+      "back_office_workshop_id": "beletetest22",
+      "display_name": "deletetest"
+    },
+    {
+      "location_id": "1994",
+      "back_office_workshop_id": "backtest",
+      "display_name": "test"
+    }
+  ]
+}

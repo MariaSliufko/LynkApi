@@ -33,6 +33,7 @@ using (var client = new HttpClient())
             Console.WriteLine($"[{workshop.LocationId}, {workshop.BackOfficeWorkshopId}, {workshop.DisplayName}, {workshop.TimeZone} ");
             //spara datan i txt fil workshopexamples
             File.WriteAllTextAsync(@"C:\Users\masl\Source\Repos\LynkApi\LynkApi\Workshopexamples.txt", json);
+            File.WriteAllText(@"C:\Users\masl\Source\Repos\LynkApi\LynkApi\ListData.json", json);
 
         }
 
