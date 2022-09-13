@@ -372,35 +372,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "projectUniqueName": "C:\\Users\\wiha\\source\\repos\\MariaSliufko\\LynkApi\\LynkApi\\LynkApi.csproj",
-      "projectName": "LynkApi",
-      "projectPath": "C:\\Users\\wiha\\source\\repos\\MariaSliufko\\LynkApi\\LynkApi\\LynkApi.csproj",
-      "packagesPath": "C:\\Users\\wiha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wiha\\source\\repos\\MariaSliufko\\LynkApi\\LynkApi\\obj\\",
-=======
       "projectUniqueName": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\LynkApi.csproj",
       "projectName": "LynkApi",
       "projectPath": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\LynkApi.csproj",
       "packagesPath": "C:\\Users\\masl\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\obj\\",
->>>>>>> Stashed changes
-=======
-      "projectUniqueName": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\LynkApi.csproj",
-      "projectName": "LynkApi",
-      "projectPath": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\LynkApi.csproj",
-      "packagesPath": "C:\\Users\\masl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\obj\\",
->>>>>>> Stashed changes
-=======
-      "projectUniqueName": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\LynkApi.csproj",
-      "projectName": "LynkApi",
-      "projectPath": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\LynkApi.csproj",
-      "packagesPath": "C:\\Users\\masl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\masl\\source\\repos\\LynkApi\\LynkApi\\obj\\",
->>>>>>> Stashed changes
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
