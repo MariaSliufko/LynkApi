@@ -27,7 +27,7 @@ namespace LynkApi
     public class WorkshopJSON //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
     {
         [JsonProperty("items")]
-        public List<Workshop>? workshops { get; set; }
+        public List<Workshop>? Workshops { get; set; }
     }
     //items innehåller en lista med propertys från klassen workshop.
 
