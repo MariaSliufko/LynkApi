@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace LynkApi
 {
-    internal class ExitLynk
+    public class ExitLynk
     {
+        public static void ExitProgram()//Metod namn 
+        {
+
+            Console.Write("Press any key to exit the program");
+            Console.ReadKey(true);
+            Console.Clear();
+            Environment.Exit(0);
+        }
     }
 }

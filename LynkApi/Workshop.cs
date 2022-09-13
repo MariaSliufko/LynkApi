@@ -30,6 +30,6 @@ namespace LynkApi
         public List<Workshop>? Workshops { get; set; }
     }
     //items innehåller en lista med propertys från klassen workshop.
-
+    // döp om denna till workshopList
 
 }

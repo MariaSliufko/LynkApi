@@ -44,7 +44,7 @@ namespace LynkApi
                         //SearchByTitle.SearchTitle().Wait();//Metod + wait
                         break;
                     case 3:
-                        //ExitLynk.ExitProgram();//Metod för exit
+                        ExitLynk.ExitProgram();//Metod för exit
                         break;
                     default:
                     Console.WriteLine("Invalid input, try again!");
