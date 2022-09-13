@@ -40,3 +40,15 @@ C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions
 C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
 C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Coravel.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\wiha\source\repos\MariaSliufko\LynkApi\LynkApi\obj\Debug\net6.0\LynkApi.csproj.CopyComplete

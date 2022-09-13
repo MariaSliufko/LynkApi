@@ -14,9 +14,9 @@ using static LynkApi.Workshop;
 
 namespace LynkApi
 {
-    public class ApiCalling
-     {
-        public static async Task<Workshop?> MehodToCallHttpRequest()
+    public class GetByAPI
+    {
+        public static async Task<Workshop?> Calling()
         {
             using var client = new HttpClient();
             var endpoint = new Uri("https://context-qa.lynkco.com/api/workshop/locations/");
@@ -28,15 +28,14 @@ namespace LynkApi
                 var result = client.SendAsync(request).Result;
                 string json = result.Content.ReadAsStringAsync().Result;
                 var html = await result.Content.ReadAsStringAsync();
-                //GetByAPI getByAPI = JsonConvert.DeserializeObject<GetByAPI>(json);
                 var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json);
 
                 if (myWorkshops != null && myWorkshops.Workshops != null)
                 {
-                    foreach (var workshops in myWorkshops.Workshops)
+                    foreach (var workshop in myWorkshops.Workshops)
 
                     {
-                        Console.WriteLine($"[{workshops.LocationId}, {workshops.BackOfficeWorkshopId}, {workshops.DisplayName}, {workshops.TimeZone} ");
+                        Console.WriteLine($"[{workshop.LocationId}, {workshop.BackOfficeWorkshopId}, {workshop.DisplayName}, {workshop.TimeZone} ");
                         var exeDirectory = Path.GetDirectoryName((typeof(Program).Assembly.Location)); //Läs på om detta
                         var dataDirectyory = Path.Combine(exeDirectory ?? string.Empty, "data");
                     }
