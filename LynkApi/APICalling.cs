@@ -7,21 +7,19 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using TestLynk;
 using static LynkApi.Workshop;
 
 
 
 namespace LynkApi
 {
-    public class GetByAPI
-    {
-        public static async Task<Workshop> Calling()
+    public class ApiCalling
+     {
+        public static async Task<Workshop?> MehodToCallHttpRequest()
         {
-            //TaskCompletionSource<int> tcs = new TaskCompletionSource<int>();
-            //Task.Run(() =>
             using var client = new HttpClient();
             var endpoint = new Uri("https://context-qa.lynkco.com/api/workshop/locations/");
-
             try
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, endpoint); //requestmesssage med endpoint 
@@ -33,24 +31,31 @@ namespace LynkApi
                 //GetByAPI getByAPI = JsonConvert.DeserializeObject<GetByAPI>(json);
                 var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json);
 
-                //skriv ut array med objecten med foreach loop
-                foreach (var workshop in myWorkshops.Workshops)
-
+                if (myWorkshops != null && myWorkshops.Workshops != null)
                 {
-                    Console.WriteLine($"[{workshop.LocationId}, {workshop.BackOfficeWorkshopId}, {workshop.DisplayName}, {workshop.TimeZone} ");
-                    //spara datan i txt fil workshopexamples
-                    //File.WriteAllTextAsync(@"C:\Users\masl\source\repos\LynkProject\LynkProject\Workshopexamples.txt", json);
-                    //File.WriteAllText(@"C:\Users\masl\source\repos\LynkProject\LynkProject\ListData.json", json);
-                    await File.WriteAllTextAsync(@"C:\Users\masl\source\repos\ApiAnswers\Apit.txt", json);
-                    return workshop;
+                    foreach (var workshops in myWorkshops.Workshops)
+
+                    {
+                        Console.WriteLine($"[{workshops.LocationId}, {workshops.BackOfficeWorkshopId}, {workshops.DisplayName}, {workshops.TimeZone} ");
+                        var exeDirectory = Path.GetDirectoryName((typeof(Program).Assembly.Location)); //Läs på om detta
+                        var dataDirectyory = Path.Combine(exeDirectory ?? string.Empty, "data");
+                    }
+
+                    foreach (var workshop in myWorkshops.Workshops)
+                    {
+                        Console.WriteLine($"[{workshop!.LocationId}, {workshop!.BackOfficeWorkshopId}, {workshop!.DisplayName}, {workshop!.TimeZone} ");
+                        return workshop;
+                    }
                 }
 
-                foreach (var workshop in myWorkshops.Workshops)
+                else
                 {
-                    Console.WriteLine($"[{workshop.LocationId}, {workshop.BackOfficeWorkshopId}, {workshop.DisplayName}, {workshop.TimeZone} ");
+                    IEnumerable<string> workshops = new List<string>();
                 }
 
-                //return workshop;
+
+
+                throw new ArgumentNullException("workshop");
             }
             catch (Exception e)
             {
@@ -58,7 +63,7 @@ namespace LynkApi
                 Console.WriteLine("\nPress any key to return to menu");
                 Console.ReadKey(true);
                 Console.Clear();
-                Startmenu.Menu();
+                //Startmenu.Menu();
                 return null;
             }
             finally
@@ -66,5 +71,8 @@ namespace LynkApi
                 client.Dispose();
             }
         }
+
+
+
     }
 }
