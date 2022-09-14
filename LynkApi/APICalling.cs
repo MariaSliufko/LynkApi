@@ -92,7 +92,24 @@ namespace LynkApi
 
                 }
             }
+            internal static void List()
+            {
+                string line = "";
+                using (StreamReader sr = new StreamReader(dataDirectyory))
+                { // skriver ut datan som finns i filen utan att upåpdatera den
 
+                    while ((line = sr.ReadLine()) != null)
+                    { // om den börjar med en måsvinge så körs det, då skriver den ut objekten fint, detta funkar bara nu när det är formaterat så fint
+                        if (!line.StartsWith("{"))
+                            continue;
+
+                        var obj = JObject.Parse(line.Substring(0, line.Length - 1)); //läser in denna linen som ett json objekt
+                        Console.WriteLine(obj); // skruver ut det snyggt pga jobjekt classen
+
+                    }
+                }
+
+            }
         }
     }
 }
