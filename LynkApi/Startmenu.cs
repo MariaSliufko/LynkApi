@@ -19,9 +19,10 @@ namespace LynkApi
                 do
                 {
                     Console.WriteLine(@"Main menu
-1. Lista alla WS 
-2. FLERA MENYVAL:
-3. Exit program. ");
+1. Update alla WS
+2. List allla WS
+3. FLERA MENYVAL:
+4. Exit program. ");
                     try
                     {
                         option = int.Parse(Console.ReadLine());
@@ -37,13 +38,16 @@ namespace LynkApi
 
                 switch (option)
                 {
-                    case 1:
-                    GetByAPI.Calling().Wait();
-                        break;
-                    case 2:
+                case 1:
+                    GetByAPI.Calling();
+                    break;
+                case 2:
+                    GetByAPI.List();
+                    break;
+                case 3:
                         //SearchByTitle.SearchTitle().Wait();//Metod + wait
                         break;
-                    case 3:
+                    case 4:
                         ExitLynk.ExitProgram();//Metod för exit
                         break;
                     default:
