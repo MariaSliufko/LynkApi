@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,15 +29,16 @@ namespace LynkApi
         public Uri BaseAddress { get; }
 
         public string ApiToken { get; }
+        
+        public async Task<IEnumerable<Workshop>> GetWorkshops()
+        {
+            string endpoint = "api/workshop/locations/"; //https://api-qa.sigmaorigo.com/workshop/tags/workshops/get-location-list
+        }
 
-        //public async Task<IEnumerable<Workshop>> GetWorkshops()
-        //{
-        //    string endpoint = "workshops/vsdflmövsd"
-        //}
-
-        //public async Task<IEnumerable<Appointment>> GetAppointments(string workshopId)
-        //{
-        //}
+        public async Task<IEnumerable<Appointment>> GetAppointments(string workshopId)
+        {
+            string endpoint = "api/workshop/appointments/"; // https://api-qa.sigmaorigo.com/workshop/tags/appointments/get-appointment-list
+        }
 
         //public static void ApplyHeaders(HttpRequestMessage request)
         //{
@@ -46,7 +47,7 @@ namespace LynkApi
         //    ApiClient.DefaultRequestHeaders.Accept.Clear();
         //    ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // To just look for the json in the app
 
-
+        //Här är basur och i metoderna ska vi lägga till bas + det specifika för tex get workshop, get apoinment
 
         //}
     }
