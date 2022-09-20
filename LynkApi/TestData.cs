@@ -5,51 +5,36 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System;
 using LynkApi;
+using System.Collections.Generic;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace LynkProject
 {
-    static class TestData
+    public class TestData
     {
-
-        static async void ListData()
+        public static void ListData()
         {
-            HttpClient httpClient = new();
+            List<Workshop> workshopobj = new List<Workshop> {
+                new Workshop { LocationId = "222", BackOfficeWorkshopId = "Shop1", DisplayName = "TestShop1", TimeZone = "LCC France, GMT+0" },
+                new Workshop { LocationId = "1000", BackOfficeWorkshopId = "Shop2", DisplayName="TestShop2",TimeZone = "LCC SWE, GMT+0"},
+                new Workshop { LocationId = "3000", BackOfficeWorkshopId = "Shop3", DisplayName="TestShop3", TimeZone = "LCC NORWAY, GMT+0"}
+                // mockdata
+            };
+
+
+            foreach (var Workshopobj in workshopobj) // objekten
             {
-                var endpoint = new Uri("https://context-qa.lynkco.com/api/workshop/locations/");
-                var newPost = new Workshop()
-                {
-                    LocationId = "115",
-                    BackOfficeWorkshopId = "Shop",
-                    DisplayName = "GirlShop",
-                    TimeZone = "LCC France, GMT+0"
-
-                };
+                Console.WriteLine(Workshopobj.LocationId);
+                Console.WriteLine(Workshopobj.BackOfficeWorkshopId);
+                Console.WriteLine(Workshopobj.DisplayName);
+                Console.WriteLine(Workshopobj.TimeZone);
+            }// skriver ut mockdatan
 
 
-            }
+            var Workshop = JsonConvert.SerializeObject(workshopobj); // serialiserar objekten till json
+            Console.WriteLine(Workshop); // skriver ut json
 
-            //StringContent httpContent = new StringContent(@"")
-            var url = "https://context-qa.lynkco.com/api/workshop/locations/";
-            var jsonSerializerOptions = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
-            var token = "y2TpY8nt029M~OC3NdK7tXnpF";
-            _ = await httpClient.GetAsync("https://context-qa.lynkco.com/api/workshop/locations/, httpContent");
-
-            // Save token for further requests
-            //var token = await. response.Content.ReadAsStringAsync()
-
-            //using var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
-            ////requestMessage.Headers.Add("Accept", "application/json"); // we want json back
-            ////requestMessage.Headers.Add("Content-Type", "application/json");
-
-            //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            //var response1 = await httpClient.SendAsync(requestMessage);
-            //var workshops = JsonSerializer.Deserialize<Workshop<workshops>>(
-            //    await response1.Content.ReadAsStringAsync());
-
-            //Http requests och hämta ut vss info från api:t
-            //https://docs.devexpress.com/eXpressAppFramework/403715/backend-web-api-service/use-odata-to-send-requests/use-http-client-to-access-web-api?p=net6
         }
-
-
     }
 }

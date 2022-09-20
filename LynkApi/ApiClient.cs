@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +29,7 @@ namespace LynkApi
         public Uri BaseAddress { get; }
 
         public string ApiToken { get; }
-
+        
         public async Task<IEnumerable<Workshop>> GetWorkshops()
         {
             string endpoint = "api/workshop/locations/"; //https://api-qa.sigmaorigo.com/workshop/tags/workshops/get-location-list
