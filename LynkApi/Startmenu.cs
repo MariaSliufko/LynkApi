@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LynkApi;
+using LynkProject;
 
 namespace LynkApi
 {
@@ -21,8 +22,9 @@ namespace LynkApi
                     Console.WriteLine(@"Main menu
 1. Update alla WS
 2. List allla WS
-3. FLERA MENYVAL:
-4. Exit program. ");
+3. MockD
+4. Flera val:
+5. Exit program. ");
                     try
                     {
                         option = int.Parse(Console.ReadLine());
@@ -45,9 +47,12 @@ namespace LynkApi
                     GetByAPI.List();
                     break;
                 case 3:
-                        //SearchByTitle.SearchTitle().Wait();//Metod + wait
+                    TestData.ListData();
                         break;
-                    case 4:
+                case 4:
+                    //SearchByTitle.SearchTitle().Wait();//Metod + wait
+                    break;
+                case 5:
                         ExitLynk.ExitProgram();//Metod för exit
                         break;
                     default:

@@ -30,14 +30,14 @@ namespace LynkApi
 
         public string ApiToken { get; }
 
-        public async Task<IEnumerable<Workshop>> GetWorkshops()
-        {
-            string endpoint = "workshops/vsdflmövsd"
-        }
+        //public async Task<IEnumerable<Workshop>> GetWorkshops()
+        //{
+        //    string endpoint = "workshops/vsdflmövsd"
+        //}
 
-        public async Task<IEnumerable<Appointment>> GetAppointments(string workshopId)
-        {
-        }
+        //public async Task<IEnumerable<Appointment>> GetAppointments(string workshopId)
+        //{
+        //}
 
         //public static void ApplyHeaders(HttpRequestMessage request)
         //{
