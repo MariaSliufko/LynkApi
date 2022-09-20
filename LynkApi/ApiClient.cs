@@ -47,7 +47,7 @@ namespace LynkApi
         //    ApiClient.DefaultRequestHeaders.Accept.Clear();
         //    ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // To just look for the json in the app
 
-
+        //Här är basur och i metoderna ska vi lägga till bas + det specifika för tex get workshop, get apoinment
 
         //}
     }
