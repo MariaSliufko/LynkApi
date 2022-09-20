@@ -32,11 +32,12 @@ namespace LynkApi
 
         public async Task<IEnumerable<Workshop>> GetWorkshops()
         {
-            string endpoint = "workshops/vsdflmövsd"
+            string endpoint = "api/workshop/locations/"; //https://api-qa.sigmaorigo.com/workshop/tags/workshops/get-location-list
         }
 
         public async Task<IEnumerable<Appointment>> GetAppointments(string workshopId)
         {
+            string endpoint = "api/workshop/appointments/"; // https://api-qa.sigmaorigo.com/workshop/tags/appointments/get-appointment-list
         }
 
         //public static void ApplyHeaders(HttpRequestMessage request)
