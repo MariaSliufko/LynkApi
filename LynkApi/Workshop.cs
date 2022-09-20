@@ -22,6 +22,18 @@ namespace LynkApi
 
         [JsonProperty("time_zone")]
         public string? TimeZone { get; set; }
+
+        public Workshop(string aLocationId, string aBackOfficeWorkshopId, string aDisplayName, string aTimeZone)
+        {
+            LocationId = aLocationId;
+            BackOfficeWorkshopId = aBackOfficeWorkshopId;
+            DisplayName = aDisplayName;
+            TimeZone = aTimeZone;
+        }
+
+        public Workshop()
+        {
+        }
     }
 
     public class WorkshopJSON //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
