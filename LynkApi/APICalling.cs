@@ -19,7 +19,7 @@ namespace LynkApi
     public class GetByAPI
     {
 
-        static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data.json"); // vår fil skapas ej
+        static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // vår fil skapas ej
 
         public static async void Calling()
         {
