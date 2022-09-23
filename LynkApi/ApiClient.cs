@@ -34,25 +34,46 @@ namespace LynkApi
         public string ApiToken { get; }
 
         
-        public async Task<IEnumerable<Workshop>?> GetWorkshops()
+        public async Task<IEnumerable<Workshop>?> GetWorkshops() //async makes sure that our website doesnt lock up
         {
+            //InitializeComponent();
+           // ApiHelper.InitializeClient();
+            var workshopUri = new Uri(BaseAddress, "api/workshop/locations/");
+            //string url = 
+            using (HttpResponseMessage response = await Client.GetAsync(workshopUri)) //new call/request from our api client and wait for response
+            {
+                if (response.IsSuccessStatusCode) //If successfull do something with it (read the data that came back)
+                {
+
+                    Workshop workshop = await response.Content.ReadAsStringAsync(await);
+
+                    return (IEnumerable<Workshop>?)workshop;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+
+
+            }
+
             //var response = await this.Client.GetAsync(ApiToken);
             //var workshops = new List<Workshop>();
-            
+
 
             ////}
             //var workshopUri = this.BaseAddress.ToString();
             //var apiToken = this.ApiToken;
             //var request = new HttpRequestMessage(HttpMethod.Get, workshopUri);
-            
-            
-                var workshopUri = new Uri(BaseAddress, "api/workshop/locations/");
-                var request = new HttpRequestMessage(HttpMethod.Get, workshopUri);
-                var result = Client.SendAsync(request).Result;
-                string json = result.Content.ReadAsStringAsync().Result;
-                var html = await result.Content.ReadAsStringAsync();
-                var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json);
-                return (IEnumerable<Workshop>?)result;
+
+
+            //var workshopUri = new Uri(BaseAddress, "api/workshop/locations/");
+            //var request = new HttpRequestMessage(HttpMethod.Get, workshopUri);
+            //var result = Client.SendAsync(request).Result;
+            //string json = result.Content.ReadAsStringAsync().Result;
+            //var html = await result.Content.ReadAsStringAsync();
+            //var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json);
+            //return (IEnumerable<Workshop>?)result;
 
 
 
@@ -64,7 +85,7 @@ namespace LynkApi
             //string endpoint = "api/workshop/locations/"; //https://api-qa.sigmaorigo.com/workshop/tags/workshops/get-location-list
         }
 
-        public async Task<IEnumerable<Appointment>> GetAppointments(string workshopId)
+        public async Task<IEnumerable<Appointment>> GetAppointments(int workshopId)
         {
             var appointmentUri = new Uri(BaseAddress, "api/workshop/locations/");
             var appointment = await this.Client.GetAsync(appointmentUri);
