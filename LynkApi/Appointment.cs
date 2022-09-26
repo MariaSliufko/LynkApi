@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LynkApi;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LynkApi
 {
-    public class Appointment
+    public class Appointment 
     {
         // LynkApi myDeserializedClass = JsonConvert.DeserializeObject<LynkApi>(myJsonResponse);
         
@@ -78,20 +79,21 @@ namespace LynkApi
                 this.ScheduledWorkEndTime = scheduledWorkEndTime;
             }
 
-        public class Root
+        public class AppointmentJson
         {
             [JsonConstructor]
-            public Root(
-                [JsonProperty("appointments")] List<Appointment> appointments
+            public AppointmentJson(
+                [JsonProperty("appointments")] List<Appointment> appointments 
             )
             {
                 this.Appointments = appointments;
             }
 
             [JsonProperty("appointments")]
-            public IReadOnlyList<Appointment> Appointments { get; }
+            public IReadOnlyList<Appointment> Appointments { get; } //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
         }
 
 
     }
 }
+
