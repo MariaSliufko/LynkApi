@@ -14,7 +14,7 @@ namespace LynkApi
 {
     public class ApiClient
     {
-        public ApiClient(Uri baseAddress, string apiToken)
+        public ApiClient(Uri baseAddress, string apiToken) //konstruktor
         {
             if (string.IsNullOrEmpty(apiToken))
             {
@@ -22,99 +22,64 @@ namespace LynkApi
             }
 
             this.BaseAddress = baseAddress ?? throw new ArgumentNullException(nameof(baseAddress));
-            this.ApiToken = apiToken;
-
+            
             this.Client = new HttpClient();
+            this.Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);  //authentication header
         }
 
-        public HttpClient Client { get; }
+        public HttpClient Client { get; } //properties
 
         public Uri BaseAddress { get; }
 
-        public string ApiToken { get; }
-
         
-        public async Task<IEnumerable<Workshop>?> GetWorkshops() //async makes sure that our website doesnt lock up
+        public async Task<IEnumerable<Workshop>?> GetWorkshops() //async makes sure that our website doesnt lock up. IEnumerable supports a simple iteration over a (non-generic) collection.
         {
-            //InitializeComponent();
-           // ApiHelper.InitializeClient();
-            var workshopUri = new Uri(BaseAddress, "api/workshop/locations/");
-            //string url = 
+            //variabel workshopUri
+            var workshopUri = new Uri(BaseAddress, "locations/"); //puts together baseadress and endpoint
+            
             using (HttpResponseMessage response = await Client.GetAsync(workshopUri)) //new call/request from our api client and wait for response
             {
                 if (response.IsSuccessStatusCode) //If successfull do something with it (read the data that came back)
                 {
-
-                    Workshop workshop = await response.Content.ReadAsStringAsync(await);
-
-                    return (IEnumerable<Workshop>?)workshop;
+                    string json = await response.Content.ReadAsStringAsync(); //awaits the response and content is the content of my request
+                    var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json); //deserialize 
+                    return myWorkshops?.Workshops;
+                   
                 }
                 else
                 {
                     throw new Exception(response.ReasonPhrase);
                 }
-
-
             }
 
-            //var response = await this.Client.GetAsync(ApiToken);
-            //var workshops = new List<Workshop>();
-
-
-            ////}
-            //var workshopUri = this.BaseAddress.ToString();
-            //var apiToken = this.ApiToken;
-            //var request = new HttpRequestMessage(HttpMethod.Get, workshopUri);
-
-
-            //var workshopUri = new Uri(BaseAddress, "api/workshop/locations/");
-            //var request = new HttpRequestMessage(HttpMethod.Get, workshopUri);
-            //var result = Client.SendAsync(request).Result;
-            //string json = result.Content.ReadAsStringAsync().Result;
-            //var html = await result.Content.ReadAsStringAsync();
-            //var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json);
-            //return (IEnumerable<Workshop>?)result;
-
-
-
-
-            //var workshop = await this.Client.GetAsync(workshopUri);
-
-            //return Workshop;
-            // return await Task.FromResult(Workshop);
-            //string endpoint = "api/workshop/locations/"; //https://api-qa.sigmaorigo.com/workshop/tags/workshops/get-location-list
         }
 
-        public async Task<IEnumerable<Appointment>> GetAppointments(int workshopId)
+        public async Task<IEnumerable<Appointment>?> GetAppointments(int workshopId)
         {
             var appointmentUri = new Uri(BaseAddress, "api/workshop/locations/");
-            var appointment = await this.Client.GetAsync(appointmentUri);
-            return (IEnumerable<Appointment>)appointment;
+            using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var myAppointments = JsonConvert.DeserializeObject<Appointment>(json);
+                    return myAppointments as IEnumerable<Appointment>;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+
+            //var appointment = await Client.GetAsync(appointmentUri);
+
 
 
 
            // string endpoint = "api/workshop/appointments/"; // https://api-qa.sigmaorigo.com/workshop/tags/appointments/get-appointment-list
         }
 
-        public static async void ApplyHeaders(HttpRequestMessage request)
-        {
-            var baseAddress = new Uri("https://context-qa.lynkco.com/api/workshop/");
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer, ApiToken");
-            
+        
 
-
-
-           // private const string ApiToken = "y2TpY8nt029M~OC3NdK7tXnpF"; Vart ska nyckelmn finnas?
-           
-
-
-        //    ApiClient = new HttpClient();
-        //    ApiClient.BaseAddress = new Uri("https://context-qa.lynkco.com/api/workshop");
-        //    ApiClient.DefaultRequestHeaders.Accept.Clear();
-        //    ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // To just look for the json in the app
-
-        //Här är basur och i metoderna ska vi lägga till bas + det specifika för tex get workshop, get apoinment
-
-    }
     }
 }

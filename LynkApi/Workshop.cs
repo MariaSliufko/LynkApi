@@ -34,6 +34,11 @@ namespace LynkApi
         public Workshop()
         {
         }
+
+        public static implicit operator Workshop(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class WorkshopJSON //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
