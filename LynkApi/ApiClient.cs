@@ -9,6 +9,7 @@ using LynkApi;
 using System.Net;
 using Newtonsoft.Json;
 using TestLynk;
+using static LynkApi.Appointment;
 
 namespace LynkApi
 {
@@ -56,14 +57,14 @@ namespace LynkApi
 
         public async Task<IEnumerable<Appointment>?> GetAppointments(int workshopId)
         {
-            var appointmentUri = new Uri(BaseAddress, "api/workshop/locations/");
+            var appointmentUri = new Uri(BaseAddress, "appointments/");
             using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
             {
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
-                    var myAppointments = JsonConvert.DeserializeObject<Appointment>(json);
-                    return myAppointments as IEnumerable<Appointment>;
+                    var myAppointments = JsonConvert.DeserializeObject<AppointmentJSON>(json);
+                    return myAppointments?.Appointments;
                 }
                 else
                 {
@@ -71,12 +72,6 @@ namespace LynkApi
                 }
             }
 
-            //var appointment = await Client.GetAsync(appointmentUri);
-
-
-
-
-           // string endpoint = "api/workshop/appointments/"; // https://api-qa.sigmaorigo.com/workshop/tags/appointments/get-appointment-list
         }
 
         
