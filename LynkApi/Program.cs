@@ -11,16 +11,19 @@ namespace TestLynk
     {
         static void Main(string[] args)
         {
-                Startmenu start = new Startmenu();//Kallar på metoden för start meny.
-                start.Start();//Kallar på metoden för att starta menyn.
+           Startmenu start = new Startmenu();//Kallar på metoden för start meny.
+           start.Start();//Kallar på metoden för att starta menyn.
+           
 
-        //    ApiClient api = new ApiClient(new Uri("https://context-qa.lynkco.com/api/workshop/"), "y2TpY8nt029M~OC3NdK7tXnpF"); //Skickar med urii till konstruktorn
-        //    var result =  api.GetWorkshops().Result;
-        //    foreach (var workshop in result ?? new List<Workshop>())
-        //    {
-        //        Console.WriteLine(workshop.DisplayName);
-        //    }
-            
-        //}
+            //    ApiClient api = new ApiClient(new Uri("https://context-qa.lynkco.com/api/workshop/"), "y2TpY8nt029M~OC3NdK7tXnpF"); //Skickar med urii till konstruktorn
+            //    var result =  api.GetWorkshops().Result;
+            //    foreach (var workshop in result ?? new List<Workshop>())
+            //    {
+            //        Console.WriteLine(workshop.DisplayName);
+            //    }
+
+
+        }
     }
 }
+ 

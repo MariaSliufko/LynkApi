@@ -79,21 +79,28 @@ namespace LynkApi
                 this.ScheduledWorkEndTime = scheduledWorkEndTime;
             }
 
-        public class AppointmentJson
+        public class AppointmentJSON
         {
-            [JsonConstructor]
-            public AppointmentJson(
-                [JsonProperty("appointments")] List<Appointment> appointments 
-            )
-            {
-                this.Appointments = appointments;
-            }
+            [JsonProperty("items")]
+            public List<Appointment>? Appointments { get; set; }
 
-            [JsonProperty("appointments")]
-            public IReadOnlyList<Appointment> Appointments { get; } //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
+            //[JsonConstructor]
+            //public AppointmentJson(
+            //    [JsonProperty("appointments")] List<Appointment> appointments 
+            //)
+            //{
+            //    this.Appointments = appointments;
+            //}
+
+            //[JsonProperty("appointments")]
+            //public IReadOnlyList<Appointment> Appointments { get; } //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
         }
 
-
+        //public class WorkshopJSON //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
+        //{
+        //    [JsonProperty("items")]
+        //    public List<Workshop>? Workshops { get; set; }
+        //}
     }
 }
 
