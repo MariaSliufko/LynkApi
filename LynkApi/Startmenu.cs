@@ -47,7 +47,8 @@ namespace LynkApi
                     GetByAPI.List();
                     break;
                 case 3:
-                    TestData.ListData();
+                    //TestData.ListData();
+                    PostData.Something();
                         break;
                 case 4:
                     //SearchByTitle.SearchTitle().Wait();//Metod + wait

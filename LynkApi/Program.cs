@@ -22,12 +22,12 @@ namespace TestLynk
             //        Console.WriteLine(workshop.DisplayName);
             //    }
 
-            ApiClient api = new ApiClient(new Uri("https://context-qa.lynkco.com/api/workshop/"), "y2TpY8nt029M~OC3NdK7tXnpF"); //Skickar med urii till konstruktorn
-               var result = api.GetAppointments("1506").Result;
-                foreach (var appointment in result ?? new List<Appointment>())
-                {
-                    Console.WriteLine(appointment.AppointmentId);
-                }
+            //ApiClient api = new ApiClient(new Uri("https://context-qa.lynkco.com/api/workshop/"), "y2TpY8nt029M~OC3NdK7tXnpF"); //Skickar med urii till konstruktorn
+            //var result = api.GetAppointments("1506").Result;
+            //foreach (var appointment in result ?? new List<Appointment>())
+            //{
+            //    Console.WriteLine(appointment.AppointmentId);
+            //}
 
         }
     }
