@@ -22,8 +22,8 @@ namespace LynkApi
                     Console.WriteLine(@"Main menu
 1. Update alla WS
 2. List allla WS
-3. MockD
-4. Flera val:
+3. Testdata cs
+4. Postdata cs:
 5. Exit program. ");
                     try
                     {
@@ -47,11 +47,11 @@ namespace LynkApi
                     GetByAPI.List();
                     break;
                 case 3:
-                    //TestData.ListData();
-                    PostData.Something();
+                    TestData.ListData();
                         break;
                 case 4:
                     //SearchByTitle.SearchTitle().Wait();//Metod + wait
+                    PostData.Something();
                     break;
                 case 5:
                         ExitLynk.ExitProgram();//Metod för exit
