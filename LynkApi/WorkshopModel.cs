@@ -9,7 +9,7 @@ namespace LynkApi
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     //Root myDeserializedClass = JsonConvert.DeserializeObject<Workshop>(result);
-    public class Workshop
+    public class WorkshopModel
     {
         [JsonProperty("location_id")]
         public string? LocationId { get; set; }
@@ -23,7 +23,7 @@ namespace LynkApi
         [JsonProperty("time_zone")]
         public string? TimeZone { get; set; }
 
-        public Workshop(string aLocationId, string aBackOfficeWorkshopId, string aDisplayName, string aTimeZone)
+        public WorkshopModel(string aLocationId, string aBackOfficeWorkshopId, string aDisplayName, string aTimeZone)
         {
             LocationId = aLocationId;
             BackOfficeWorkshopId = aBackOfficeWorkshopId;
@@ -31,11 +31,11 @@ namespace LynkApi
             TimeZone = aTimeZone;
         }
 
-        public Workshop()
+        public WorkshopModel()
         {
         }
 
-        public static implicit operator Workshop(string v)
+        public static implicit operator WorkshopModel(string v)
         {
             throw new NotImplementedException();
         }
@@ -44,7 +44,7 @@ namespace LynkApi
     public class WorkshopJSON //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
     {
         [JsonProperty("items")]
-        public List<Workshop>? Workshops { get; set; }
+        public List<WorkshopModel>? Workshops { get; set; }
     }
     //items innehåller en lista med propertys från klassen workshop.
     // döp om denna till workshopList

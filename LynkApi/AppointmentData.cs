@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LynkApi
 {
-    internal class AppointmentData : PostData
+    internal class AppointmentData : WorkshopData
     {
         private static string workshopId;
 
@@ -20,27 +20,27 @@ namespace LynkApi
 
             Console.WriteLine("Enter location id to view it's appointments: ");
             string workshopId = Console.ReadLine();
-            //if (workshopId.Any(PostData => workshopId)
+            
             if (workshopId != null)
             {
                 api = new ApiClient(new Uri(baseadress + workshopId), apiToken);
 
                 var result = api.GetAppointments(workshopId).Result;
-                //var result = myWorkshop.Any(i => i == true);
+                
                 foreach (var appointment in result)
                 {
-                    Console.WriteLine(appointment.AppointmentId);
-                    Console.WriteLine(appointment.LocationId);
-                    Console.WriteLine(appointment.VehicleId);
-                    Console.WriteLine(appointment.VehicleRegistrationPlate);
-                    Console.WriteLine(appointment.ExpectedVehicleMilage);
-                    Console.WriteLine(appointment.AssignmentTypes);
-                    Console.WriteLine(appointment.VehicleColorId);
-                    Console.WriteLine(appointment.ScheduledVehicleArrivalTime);
-                    Console.WriteLine(appointment.ScheduledVehiclePickupTime);
-                    Console.WriteLine(appointment.Status);
-                    Console.WriteLine(appointment.ScheduledWorkStartTime);
-                    Console.WriteLine(appointment.ScheduledWorkEndTime);
+                    Console.WriteLine("Appointment Id: " + appointment.AppointmentId);
+                    Console.WriteLine("Location Id: " + appointment.LocationId);
+                    Console.WriteLine("Vehicle Id: " + appointment.VehicleId);
+                    Console.WriteLine("Vehicle Registration Plate: " + appointment.VehicleRegistrationPlate);
+                    Console.WriteLine("Expected Vehicle Milage: " + appointment.ExpectedVehicleMilage);
+                    Console.WriteLine("Assignment Types: " + appointment.AssignmentTypes);
+                    Console.WriteLine("Vehicle ColorId: " + appointment.VehicleColorId);
+                    Console.WriteLine("Scheduled Vehicle Arrival Time: " + appointment.ScheduledVehicleArrivalTime);
+                    Console.WriteLine("Scheduled Vehicle Pickup Time: " + appointment.ScheduledVehiclePickupTime);
+                    Console.WriteLine("Status: " + appointment.Status);
+                    Console.WriteLine("Scheduled Work Start Time: " + appointment.ScheduledWorkStartTime);
+                    Console.WriteLine("Scheduled Work End Time: " + appointment.ScheduledWorkEndTime);
                 }
 
 

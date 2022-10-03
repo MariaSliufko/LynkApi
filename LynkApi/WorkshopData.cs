@@ -12,31 +12,27 @@ using TestLynk;
 
 namespace LynkApi
 {
-    public class PostData
+    public class WorkshopData
     {
 
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen
         static string dataFile = Path.Combine(dataDirectyory, "data.json"); // skapar filen
-        public static void Something()
+        public static void GetWorkshopData()
         {
             var baseadress = "https://context-qa.lynkco.com/api/workshop/";
             var apiToken = "y2TpY8nt029M~OC3NdK7tXnpF";
 
-            /*ApiClient api = new ApiClient(new Uri("https://context-qa.lynkco.com/api/workshop/"), "y2TpY8nt029M~OC3NdK7tXnpF");*/ //Skickar med uri till konstruktorn
             ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
             var result =  api.GetWorkshops().Result;
-             //foreach (var workshop in result ?? new List<Workshop>())
-             //{
-             //    Console.WriteLine(workshop.DisplayName);
-             //}
+             
 
             foreach (var workshop in result) // objekten
             {
-                Console.WriteLine(workshop.LocationId);
-                Console.WriteLine(workshop.BackOfficeWorkshopId);
-                Console.WriteLine(workshop.DisplayName);
-                Console.WriteLine(workshop.TimeZone);
-            }// skriver ut mockdatan
+                Console.WriteLine("Location Id: " + workshop.LocationId);
+                Console.WriteLine("Back Office Workshop Id: " + workshop.BackOfficeWorkshopId);
+                Console.WriteLine("Display Name: " + workshop.DisplayName);
+                Console.WriteLine("Timezone: " + workshop.TimeZone);
+            }
 
             var Workshop = JsonConvert.SerializeObject(result); // serialiserar objekten till json
             Console.WriteLine(Workshop); // skriver ut json
@@ -62,12 +58,11 @@ namespace LynkApi
             string jsonString = File.ReadAllText(dataFile);
 
 
-            var objResponse = JsonConvert.DeserializeObject<List<Workshop>>(jsonString); //skriver om JSON till .NET objekt
+            var objResponse = JsonConvert.DeserializeObject<List<WorkshopModel>>(jsonString); //skriver om JSON till .NET objekt
             foreach (var obj in objResponse) // för varje obj i response skriv ut namnet på WS
             {
-                //Console.WriteLine(obj.LocationId); //Console.WriteLine(obj.BackOfficeWorkshopId);
                 Console.WriteLine(obj.DisplayName);
-                //Console.WriteLine(obj.TimeZone);
+                
             }
 
         }

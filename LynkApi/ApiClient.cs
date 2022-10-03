@@ -9,7 +9,7 @@ using LynkApi;
 using System.Net;
 using Newtonsoft.Json;
 using TestLynk;
-using static LynkApi.Appointment;
+using static LynkApi.AppointmentModel;
 using System.Reflection.Metadata;
 
 namespace LynkApi
@@ -33,11 +33,8 @@ namespace LynkApi
 
         public Uri BaseAddress { get; }
         public string Query { get; } //?
-
-      
-
         
-        public async Task<IEnumerable<Workshop>?> GetWorkshops() //async makes sure that our website doesnt lock up. IEnumerable supports a simple iteration over a (non-generic) collection.
+        public async Task<IEnumerable<WorkshopModel>?> GetWorkshops() //async makes sure that our website doesnt lock up. IEnumerable supports a simple iteration over a (non-generic) collection.
         {
             //variabel workshopUri
             var workshopUri = new Uri(BaseAddress, "locations/"); //puts together baseadress and endpoint
@@ -59,7 +56,7 @@ namespace LynkApi
 
         }
 
-        public async Task<IEnumerable<Appointment>?> GetAppointments(string workshopId)
+        public async Task<IEnumerable<AppointmentModel>?> GetAppointments(string workshopId)
         {
 
             var appointmentUri = new Uri(BaseAddress, "appointments/?location=" + workshopId);

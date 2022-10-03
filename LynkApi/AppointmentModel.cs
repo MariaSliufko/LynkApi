@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace LynkApi
 {
-    public class Appointment 
-    {
-        // LynkApi myDeserializedClass = JsonConvert.DeserializeObject<LynkApi>(myJsonResponse);
-        
+    public class AppointmentModel 
+    { 
             [JsonProperty("appointment_id")]
             public string? AppointmentId { get; set; }
 
@@ -50,7 +48,7 @@ namespace LynkApi
 
 
             [JsonConstructor]
-            public Appointment(
+            public AppointmentModel(
             [JsonProperty("appointment_id")] string appointmentId,
             [JsonProperty("location_id")] string locationId,
             [JsonProperty("vehicle_id")] string vehicleId,
@@ -82,25 +80,10 @@ namespace LynkApi
         public class AppointmentJSON
         {
             [JsonProperty("items")]
-            public List<Appointment>? Appointments { get; set; }
-
-            //[JsonConstructor]
-            //public AppointmentJson(
-            //    [JsonProperty("appointments")] List<Appointment> appointments 
-            //)
-            //{
-            //    this.Appointments = appointments;
-            //}
-
-            //[JsonProperty("appointments")]
-            //public IReadOnlyList<Appointment> Appointments { get; } //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
+            public List<AppointmentModel>? Appointments { get; set; }
         }
 
-        //public class WorkshopJSON //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
-        //{
-        //    [JsonProperty("items")]
-        //    public List<Workshop>? Workshops { get; set; }
-        //}
+       
     }
 }
 
