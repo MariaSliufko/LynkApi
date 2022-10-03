@@ -21,7 +21,7 @@ namespace LynkApi
                 {
                     Console.WriteLine(@"Main menu
 1. Update alla WS
-2. List allla WS
+2. List alla app
 3. Testdata cs
 4. Postdata cs:
 5. Exit program. ");
@@ -44,7 +44,8 @@ namespace LynkApi
                     GetByAPI.Calling();
                     break;
                 case 2:
-                    GetByAPI.List();
+                    //GetByAPI.List();
+                    AppointmentData.Appointments();
                     break;
                 case 3:
                     TestData.ListData();
