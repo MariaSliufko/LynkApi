@@ -15,6 +15,10 @@
 //        //static void Update()
 //        //{
 //        //    string path = @"C:\Users\masl\source\repos\LynkProject\LynkProject task\task.txt";
+//                  
+
+//path to where data is stored: C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\data
+// or: C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\data
 
 //        //    using StreamWriter sw = new StreamWriter(path, false);
 //        //    Writer.WriteLine($"{DateTime.Now.ToString()} - This is running from a task");
