@@ -35,7 +35,14 @@ namespace LynkApi
                     Console.WriteLine(appointment.VehicleRegistrationPlate);
                     Console.WriteLine(appointment.ExpectedVehicleMilage);
                     Console.WriteLine(appointment.AssignmentTypes);
+                    Console.WriteLine(appointment.VehicleColorId);
+                    Console.WriteLine(appointment.ScheduledVehicleArrivalTime);
+                    Console.WriteLine(appointment.ScheduledVehiclePickupTime);
+                    Console.WriteLine(appointment.Status);
+                    Console.WriteLine(appointment.ScheduledWorkStartTime);
+                    Console.WriteLine(appointment.ScheduledWorkEndTime);
                 }
+
 
                 var Appointment = JsonConvert.SerializeObject(result); // serialiserar objekten till json
                 Console.WriteLine(Appointments); // skriver ut json
