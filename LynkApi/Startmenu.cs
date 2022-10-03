@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LynkApi;
-using LynkProject;
+//using LynkProject;
 
 namespace LynkApi
 {
@@ -13,7 +13,6 @@ namespace LynkApi
         {
             public static void Menu()//Metod
             {
-                Console.WriteLine("test");
                 int option = 0;//Börja med värde 0
 
                 bool isInvalidInput = false;
@@ -21,9 +20,9 @@ namespace LynkApi
                 {
                     Console.WriteLine(@"Main menu
 1. Update alla WS
-2. List alla app
+2. List all appointments.
 3. Testdata cs
-4. Postdata cs:
+4. List and save all Workshops.
 5. Exit program. ");
                     try
                     {
@@ -41,18 +40,18 @@ namespace LynkApi
                 switch (option)
                 {
                 case 1:
-                    GetByAPI.Calling();
+                    //GetByAPI.Calling();
                     break;
                 case 2:
                     //GetByAPI.List();
                     AppointmentData.Appointments();
                     break;
                 case 3:
-                    TestData.ListData();
+                    //TestData.ListData();
                         break;
                 case 4:
                     //SearchByTitle.SearchTitle().Wait();//Metod + wait
-                    PostData.Something();
+                    WorkshopData.GetWorkshopData();
                     break;
                 case 5:
                         ExitLynk.ExitProgram();//Metod för exit
@@ -72,19 +71,6 @@ namespace LynkApi
                 Menu();
             }
 
-
-        // lägg rätt senare
-        //Console.WriteLine(json);
-
-        ////Deserialize json response till c# array av typen Post[]
-        //var myWorkshops = JsonConvert.DeserializeObject<Workshop[]>(json);
-        ////skriv ut array med objecten med foreach loop
-        //foreach (var workshop in myWorkshops)
-        //{
-        //    Console.WriteLine($"[{workshop.LocationId} {workshop.BackOfficeWorkshopId} {workshop.DisplayName} {workshop.TimeZone}");
-        //    //Console.ReadLine();
-        //}
-
-}
+        }
     
 }
