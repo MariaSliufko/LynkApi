@@ -70,24 +70,7 @@ namespace LynkApi
                 //Console.WriteLine(obj.TimeZone);
             }
 
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
