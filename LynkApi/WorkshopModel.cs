@@ -23,12 +23,17 @@ namespace LynkApi
         [JsonProperty("time_zone")]
         public string? TimeZone { get; set; }
 
+        public List<string> Appointments { get; set; }
+        public List<string> Vehicles { get; set; }
+
         public WorkshopModel(string aLocationId, string aBackOfficeWorkshopId, string aDisplayName, string aTimeZone)
         {
             LocationId = aLocationId;
             BackOfficeWorkshopId = aBackOfficeWorkshopId;
             DisplayName = aDisplayName;
             TimeZone = aTimeZone;
+            Appointments = new List<string>();
+            Vehicles = new List<string>();
         }
 
         public WorkshopModel()

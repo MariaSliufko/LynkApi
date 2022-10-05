@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using TestLynk;
 using static LynkApi.AppointmentModel;
 using System.Reflection.Metadata;
+using static LynkApi.VehicleModel;
 
 namespace LynkApi
 {
@@ -56,6 +57,30 @@ namespace LynkApi
 
         }
 
+        public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId)
+        {
+
+            var appointmentUri = new Uri(BaseAddress, "vehicles/?location=" + workshopId);
+
+
+            using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
+            {
+
+                if (response.IsSuccessStatusCode)
+                {
+                    
+                    string json = await response.Content.ReadAsStringAsync();
+                    var myVechicles = JsonConvert.DeserializeObject<VehicleJSON>(json);
+                    return myVechicles?.Vehicles;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+
+
+        }
         public async Task<IEnumerable<AppointmentModel>?> GetAppointments(string workshopId)
         {
 
@@ -86,7 +111,7 @@ namespace LynkApi
         public async Task<IEnumerable<AppointmentModel>?> GetAllAppointments()
         {
 
-            var appointmentUri = new Uri(BaseAddress, "appointments/?location=all");
+            var appointmentUri = new Uri(BaseAddress, "appointments/");
 
             //https://context-qa.lynkco.com/api/workshop/appointments?location=all
 
