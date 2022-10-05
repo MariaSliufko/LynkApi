@@ -14,7 +14,7 @@ namespace LynkApi
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "appointmentData"); // skapar filvägen
         static string dataFile = Path.Combine(dataDirectyory, "appointmentData.json"); // skapar filen
 
-        private static string workshopId;
+       // private static string workshopId;
 
         public static void Appointments()
         {

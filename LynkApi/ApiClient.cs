@@ -83,7 +83,33 @@ namespace LynkApi
 
         }
 
-        
+        public async Task<IEnumerable<AppointmentModel>?> GetAllAppointments()
+        {
+
+            var appointmentUri = new Uri(BaseAddress, "appointments/?location=all");
+
+            //https://context-qa.lynkco.com/api/workshop/appointments?location=all
+
+            using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
+            {
+
+                if (response.IsSuccessStatusCode)
+                {
+
+                    string json = await response.Content.ReadAsStringAsync();
+                    var myAppointments = JsonConvert.DeserializeObject<AppointmentJSON>(json);
+                    return myAppointments?.Appointments;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+
+
+
+
+        }
 
     }
 }
