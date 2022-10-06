@@ -10,8 +10,8 @@ namespace LynkApi
 {
     internal class AllAppointmentsdata
     {
-        //GetAllAppointments
 
+        //GetAllAppointments
 
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen
         static string dataFile = Path.Combine(dataDirectyory, "allAppointmentData.json"); // skapar filen
@@ -25,15 +25,66 @@ namespace LynkApi
             ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
             api = new ApiClient(new Uri(baseadress), apiToken);
 
-            var result = api.GetAllAppointments().Result;
+            var result = api.GetWorkshops().Result;
 
-            foreach (var appointments in result)
+            List<AppointmentModel> appointmentList = new List<AppointmentModel>();
+            List<VehicleModel> vehicleList = new List<VehicleModel>();
+            
+
+            if (!Directory.Exists(dataDirectyory + "/workshops")) // om directoryn inte finns
             {
-                Console.WriteLine(appointments.LocationId);
+                Directory.CreateDirectory(dataDirectyory + "/workshops"); // skapa map
+            }
 
+            if (!Directory.Exists(dataDirectyory + "/appointments")) // om directoryn inte finns
+            {
+                Directory.CreateDirectory(dataDirectyory + "/appointments"); // skapa map
             }
 
 
+            if (!Directory.Exists(dataDirectyory + "/vehicles")) // om directoryn inte finns
+            {
+                Directory.CreateDirectory(dataDirectyory + "/vehicles"); // skapa map
+            }
+
+            foreach (var workshop in result)
+            {
+
+                var appointments = api.GetAppointments(workshop.LocationId).Result;                
+                appointmentList.AddRange(appointments);
+                workshop.Appointments = appointments.Select(a => a.AppointmentId).ToList();
+
+
+                var vehicles = api.GetVehicles(workshop.LocationId).Result;
+                vehicleList.AddRange(vehicles);
+                workshop.Vehicles = vehicles.Select(v => v.VehicleId).ToList();
+
+                var file = dataDirectyory + "/workshops/" + workshop.LocationId + ".json";
+                File.WriteAllText(file, JsonConvert.SerializeObject(workshop)); // serialiserar objekten till json
+                
+
+            }
+
+            foreach (var appointment in appointmentList)
+            {
+
+                var file = dataDirectyory + "/appointments/" + appointment.AppointmentId + ".json";
+
+                File.WriteAllText(file, JsonConvert.SerializeObject(appointment)); // serialiserar objekten till json
+            }
+
+            foreach (var vehicle in vehicleList)
+            {
+
+                var file = dataDirectyory + "/vehicles/" + vehicle.VehicleId + ".json";
+
+                File.WriteAllText(file, JsonConvert.SerializeObject(vehicle)); // serialiserar objekten till json
+            }
+
+        }
+    }
+}
+            /*
             var Appointments = JsonConvert.SerializeObject(result); // serialiserar objekten till json
             Console.WriteLine(Appointments); // skriver ut json
 
@@ -69,3 +120,6 @@ namespace LynkApi
 
     }
 }
+
+
+*/
