@@ -27,7 +27,7 @@ namespace LynkApi
 
             var result = api.GetWorkshops().Result;
 
-            List<AppointmentModel> appointmentList = new List<AppointmentModel>();
+            List<AppointmentModel> appointmentList = new List<AppointmentModel>(); //initializes a new instance of list from appointmentmodel and vehicalmodel
             List<VehicleModel> vehicleList = new List<VehicleModel>();
             
 

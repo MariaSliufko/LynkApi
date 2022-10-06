@@ -25,7 +25,7 @@ namespace LynkApi
         
         public class VehicleJSON
         {
-            [JsonProperty("items")]
+            [JsonProperty("vehicleList")] // //vehicleList innehåller en lista med propertys från klassen vehicle.
             public List<VehicleModel>? Vehicles { get; set; }
         }
 
