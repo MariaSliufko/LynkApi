@@ -57,7 +57,7 @@ namespace LynkApi
 
         }
 
-        public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId)
+        public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId) // get V metoden 
         {
 
             var appointmentUri = new Uri(BaseAddress, "vehicles/?location=" + workshopId);

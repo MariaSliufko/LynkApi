@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LynkApi
 {
-    public class VehicleModel 
+    public class VehicleModel // exakt samma som ws model mer elr mindre 
     { 
 
             [JsonProperty("location_id")]
