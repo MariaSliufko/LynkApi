@@ -20,10 +20,10 @@ namespace LynkApi
         {
             int option = 0;//Börja med värde 0
 
-            bool isInvalidInput = false;
+            bool isInvalidInput = false;  // ändrat menyval
             do
             {
-                Console.WriteLine(@"Main menu
+                Console.WriteLine(@"Main menu 
 1. Update script
 2. Lookup Workshop
 3. Lookup Vehicle
@@ -45,32 +45,32 @@ namespace LynkApi
             switch (option)
             {
                 case 1:
-                    AllAppointmentsdata.AllAppointments();
+                    AllAppointmentsdata.AllAppointments(); // byt namn till download data
                     break;
                 case 2:
 
                     Console.WriteLine("Type Workshop ID:");
-                    string wId = Console.ReadLine();
+                    string wId = Console.ReadLine(); // skriv in WS id,
 
-                    var dir = dataDirectyory + "/workshops/" + wId + ".json";
+                    var dir = dataDirectyory + "/workshops/" + wId + ".json"; // så skapas sökvägen "dirr" döpa om till path, om vi söker på tex 1 så blir sökvägen Workshops.1.json
 
 
-                    if (File.Exists(dir))
+                    if (File.Exists(dir)) // finns denna sökväg / finns denna fil?
                     {
-                        using (StreamReader sr = new StreamReader(dir))
+                        using (StreamReader sr = new StreamReader(dir)) // då läser den raden som finns i filen då vi vet att all data står på 1 rad 
                         {
                             var line = sr.ReadLine();
-                            var obj = JObject.Parse(line); //läser in denna linen som ett json objekt
-                            Console.WriteLine(obj); // skruver ut det snyggt pga jobjekt classen
+                            var obj = JObject.Parse(line); //läser in denna linen som ett json objekt, vi parsar den 
+                            Console.WriteLine(obj); // skriver ut de objektet, har en inbygd to string metod så det blir så snyggt i  konsollen 
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Workshop ID not found");
+                        Console.WriteLine("Workshop ID not found"); // om WS idt ej finns skrivs detta ut 
                     }
                     break;
                 case 3:
-                    getVehicle();
+                    getVehicle(); // exakt samma kod, som Appointments 
                    
                     break;
                 case 4:

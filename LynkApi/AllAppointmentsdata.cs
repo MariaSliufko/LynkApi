@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32.SafeHandles;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using TestLynk;
 
 namespace LynkApi
 {
-    internal class AllAppointmentsdata
+    internal class AllAppointmentsdata // här var det mkt hade hänt 
     {
 
         //GetAllAppointments
@@ -25,52 +26,54 @@ namespace LynkApi
             ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
             api = new ApiClient(new Uri(baseadress), apiToken);
 
-            var result = api.GetWorkshops().Result;
+            var result = api.GetWorkshops().Result; // hämtar alla WS
 
-            List<AppointmentModel> appointmentList = new List<AppointmentModel>();
-            List<VehicleModel> vehicleList = new List<VehicleModel>();
-            
+            List<AppointmentModel> appointmentList = new List<AppointmentModel>(); // skapar en appointmentList
+            List<VehicleModel> vehicleList = new List<VehicleModel>(); // skapar en vehicleList
 
-            if (!Directory.Exists(dataDirectyory + "/workshops")) // om directoryn inte finns
+            // tanken är sen att vi ska lagra alla AP och alla V i dessa listor, kmr bli många rader långa 
+
+
+            if (!Directory.Exists(dataDirectyory + "/workshops")) // om directoryn inte finns för workshops
             {
-                Directory.CreateDirectory(dataDirectyory + "/workshops"); // skapa map
+                Directory.CreateDirectory(dataDirectyory + "/workshops"); // så sklapar den mappen för Workshops
             }
 
-            if (!Directory.Exists(dataDirectyory + "/appointments")) // om directoryn inte finns
+            if (!Directory.Exists(dataDirectyory + "/appointments")) // om directoryn inte finns för appointments 
             {
-                Directory.CreateDirectory(dataDirectyory + "/appointments"); // skapa map
+                Directory.CreateDirectory(dataDirectyory + "/appointments"); // så sklapar den mappen för appointments
             }
 
 
-            if (!Directory.Exists(dataDirectyory + "/vehicles")) // om directoryn inte finns
+            if (!Directory.Exists(dataDirectyory + "/vehicles")) // om directoryn inte finns för vehicles
             {
-                Directory.CreateDirectory(dataDirectyory + "/vehicles"); // skapa map
+                Directory.CreateDirectory(dataDirectyory + "/vehicles"); // så skapar den en map för vehicles
             }
 
-            foreach (var workshop in result)
+            foreach (var workshop in result) // när vi hittar alla WS går vi igenom varje WS, först skapar vi alla mappar se ovan om de ej finns. 
             {
 
-                var appointments = api.GetAppointments(workshop.LocationId).Result;                
-                appointmentList.AddRange(appointments);
-                workshop.Appointments = appointments.Select(a => a.AppointmentId).ToList();
+                var appointments = api.GetAppointments(workshop.LocationId).Result;   // hämtar alla AP från APIT med location id 
+                appointmentList.AddRange(appointments); // lägger till alla AP i listan, rage lägger till flera saker i listan ex om de kmr 100 st nya AP läggs det till i listan som vi skapade först
+                workshop.Appointments = appointments.Select(a => a.AppointmentId).ToList(); //lamda uttryck, i själva WS:s sträng lista så lägger vi till varje AP (för varje a i appointment så tar vi AP id bara och så gör vi det till en lista 
+                // denna raden skapar stränglistan med alla Ap ids, så om en AP har idt 23 och ligger på WS med id 1 så kmr den filen se ut såhär 1.23 . dvs wsid+APid blir namnet på filen
 
-
-                var vehicles = api.GetVehicles(workshop.LocationId).Result;
-                vehicleList.AddRange(vehicles);
-                workshop.Vehicles = vehicles.Select(v => v.VehicleId).ToList();
-
-                var file = dataDirectyory + "/workshops/" + workshop.LocationId + ".json";
-                File.WriteAllText(file, JsonConvert.SerializeObject(workshop)); // serialiserar objekten till json
                 
+                var vehicles = api.GetVehicles(workshop.LocationId).Result; // samma på V, vi hämtar alla V för den WS 
+                vehicleList.AddRange(vehicles); // lägger till varje V i den 1a listan vi skapade 
+                workshop.Vehicles = vehicles.Select(v => v.VehicleId).ToList(); // sen lägger vi till varje V id i WS som sträng, den tar v:t för vehicle och hämtar idt och gör det till en lista 
 
+                var file = dataDirectyory + "/workshops/" + workshop.LocationId + ".json"; // vi skapar mappen WS, i denna sakapr vi filen workshop.LocationId.json så det vblir typ WS 1 etc som speglar idt på alla WS
+                File.WriteAllText(file, JsonConvert.SerializeObject(workshop)); // ¨till den filen vi skapade ovan lägger vi till och serialisar objektet gör om den modellen vi har till JSON, det är drf vi får det utskrivet och formaterat finare
+                
+                // så för varje WS hämtar vi alla AP och lägger till i listan och hämtar alla V och lägger till i listan 
             }
 
-            foreach (var appointment in appointmentList)
+            foreach (var appointment in appointmentList) // när vi gått igenom alla WS så går vi igenom alla AP i den listan, så alla AP vi gått igenom och lagt till idn på då går vi igenom varje objekt
             {
-
-                var file = dataDirectyory + "/appointments/" + appointment.AppointmentId + ".json";
-
-                File.WriteAllText(file, JsonConvert.SerializeObject(appointment)); // serialiserar objekten till json
+                
+                var file = dataDirectyory + "/appointments/" + appointment.AppointmentId + ".json"; // för varje AP lägger vi i AP mappen och AP id samma som ovan med idt och namnet som rad 58
+                File.WriteAllText(file, JsonConvert.SerializeObject(appointment));
             }
 
             foreach (var vehicle in vehicleList)
@@ -120,6 +123,5 @@ namespace LynkApi
 
     }
 }
-
 
 */
