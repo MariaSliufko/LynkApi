@@ -71,11 +71,11 @@ namespace LynkApi
                     
                     string json = await response.Content.ReadAsStringAsync();
                     var myVechicles = JsonConvert.DeserializeObject<VehicleJSON>(json);
-                    return myVechicles?.Vehicles;
+                    return myVechicles?.Vehicles; //returns list of vehicles
                 }
                 else
                 {
-                    throw new Exception(response.ReasonPhrase);
+                    throw new Exception(response.ReasonPhrase); //initializes a new instance of exception class with response phrase sent by server and statuscode.
                 }
             }
 

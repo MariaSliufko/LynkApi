@@ -27,9 +27,10 @@ namespace LynkApi
             api = new ApiClient(new Uri(baseadress), apiToken);
 
             var result = api.GetWorkshops().Result; // hämtar alla WS
-
             List<AppointmentModel> appointmentList = new List<AppointmentModel>(); // skapar en appointmentList
             List<VehicleModel> vehicleList = new List<VehicleModel>(); // skapar en vehicleList
+            List<AppointmentModel> appointmentList = new List<AppointmentModel>(); //initializes a new instance of list from appointmentmodel and vehicalmodel
+            List<VehicleModel> vehicleList = new List<VehicleModel>();
 
             // tanken är sen att vi ska lagra alla AP och alla V i dessa listor, kmr bli många rader långa 
 
