@@ -80,7 +80,7 @@ namespace LynkApi
         public class AppointmentJSON
         {
             [JsonProperty("items")]
-            public List<AppointmentModel>? Appointments { get; set; }
+            public List<AppointmentModel>? AppointmentList { get; set; }
         }
 
        

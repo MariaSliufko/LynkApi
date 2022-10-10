@@ -9,15 +9,16 @@ using TestLynk;
 
 namespace LynkApi
 {
-    internal class AllAppointmentsdata // här var det mkt hade hänt 
+    internal class FileCreator // här var det mkt hade hänt 
     {
 
         //GetAllAppointments
 
-        static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen
+        // C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\data
+        static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen C:/documents/maria/github/lykapi/bin + /data
         static string dataFile = Path.Combine(dataDirectyory, "allAppointmentData.json"); // skapar filen
 
-        public static void AllAppointments()
+        public static void FetchDataFromDatabase()
         {
 
             var baseadress = "https://context-qa.lynkco.com/api/workshop/";
@@ -29,8 +30,7 @@ namespace LynkApi
             var result = api.GetWorkshops().Result; // hämtar alla WS
             List<AppointmentModel> appointmentList = new List<AppointmentModel>(); // skapar en appointmentList
             List<VehicleModel> vehicleList = new List<VehicleModel>(); // skapar en vehicleList
-            List<AppointmentModel> appointmentList = new List<AppointmentModel>(); //initializes a new instance of list from appointmentmodel and vehicalmodel
-            List<VehicleModel> vehicleList = new List<VehicleModel>();
+            
 
             // tanken är sen att vi ska lagra alla AP och alla V i dessa listor, kmr bli många rader långa 
 

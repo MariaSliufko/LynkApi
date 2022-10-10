@@ -46,7 +46,7 @@ namespace LynkApi
                 {
                     string json = await response.Content.ReadAsStringAsync(); //awaits the response and content is the content of my request
                     var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json); //deserialize 
-                    return myWorkshops?.Workshops;
+                    return myWorkshops?.WorkshopList;
                    
                 }
                 else
@@ -71,7 +71,7 @@ namespace LynkApi
                     
                     string json = await response.Content.ReadAsStringAsync();
                     var myVechicles = JsonConvert.DeserializeObject<VehicleJSON>(json);
-                    return myVechicles?.Vehicles; //returns list of vehicles
+                    return myVechicles?.VehicleList; //returns list of vehicles
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace LynkApi
 
                         string json = await response.Content.ReadAsStringAsync();
                         var myAppointments = JsonConvert.DeserializeObject<AppointmentJSON>(json);
-                        return myAppointments?.Appointments;
+                        return myAppointments?.AppointmentList;
                     }
                     else
                     {
@@ -123,7 +123,7 @@ namespace LynkApi
 
                     string json = await response.Content.ReadAsStringAsync();
                     var myAppointments = JsonConvert.DeserializeObject<AppointmentJSON>(json);
-                    return myAppointments?.Appointments;
+                    return myAppointments?.AppointmentList;
                 }
                 else
                 {
