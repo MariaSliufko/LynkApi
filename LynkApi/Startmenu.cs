@@ -45,7 +45,7 @@ namespace LynkApi
             switch (option)
             {
                 case 1:
-                    FileCreator.FetchDataFromDatabase(); // byt namn till download data
+                    FileCreator.FetchDataFromDatabase(); 
                     break;
                 case 2:
 
