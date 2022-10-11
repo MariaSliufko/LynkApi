@@ -60,7 +60,7 @@ namespace LynkApi
         public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId) // get V metoden 
         {
 
-            var appointmentUri = new Uri(BaseAddress, "vehicles/?location=" + workshopId);
+            var appointmentUri = new Uri(BaseAddress, "vehicles/?location=" + workshopId + "&all");
 
 
             using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
@@ -84,7 +84,7 @@ namespace LynkApi
         public async Task<IEnumerable<AppointmentModel>?> GetAppointments(string workshopId)
         {
 
-            var appointmentUri = new Uri(BaseAddress, "appointments/?location=" + workshopId);
+            var appointmentUri = new Uri(BaseAddress, "appointments/?location=" + workshopId + "&all");
 
             
             using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
