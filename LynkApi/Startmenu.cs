@@ -98,11 +98,12 @@ namespace LynkApi
             string vId = Console.ReadLine();
 
             var dir = dataDirectyory + "/vehicles/" + vId + ".json";
+            // variablen dir = är data patcchen + viachles mappen +  Viachle id med matchade id + .json
+            // aka sökvägen till filen som vi vill läsa in
 
-
-            if (File.Exists(dir))
+            if (File.Exists(dir)) // om idt finns 
             {
-                using (StreamReader sr = new StreamReader(dir))
+                using (StreamReader sr = new StreamReader(dir)) // då läser den raden som finns i filen då vi vet att all data står på 1 rad 
                 {
                     var line = sr.ReadLine();
                     var obj = JObject.Parse(line); //läser in denna linen som ett json objekt
