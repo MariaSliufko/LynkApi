@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TestLynk;
 
+
+
 namespace LynkApi
 {
     internal class FileCreator // här var det mkt hade hänt 
@@ -22,13 +24,13 @@ namespace LynkApi
         {
 
             Console.WriteLine("Confirm if you want to download and uppdate all data by typing Y: ");
-            //while ((Console.ReadLine().ToUpper() == "Y"))
-            string key = Console.ReadLine().ToUpper(); //readkey?
+            
+            string key = Console.ReadLine().ToUpper(); 
 
             if (key == "Y")
             {
                 var baseadress = "https://context-qa.lynkco.com/api/workshop/";
-                var apiToken = "y2TpY8nt029M~OC3NdK7tXnpF";
+                var apiToken = "y2TpY8nt029M~OC3NdK7tXnpF"; // "API_TOKEN"; Not able to use API_TOKEN to replace api token
 
                 ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
                 api = new ApiClient(new Uri(baseadress), apiToken);
