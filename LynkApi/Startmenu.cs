@@ -27,7 +27,7 @@ namespace LynkApi
 1. Update script
 2. Lookup Workshop
 3. Lookup Vehicle
-4. List and save all Workshops.
+4. Workshop summery
 5. Exit program. ");
                 try
                 {
@@ -74,7 +74,6 @@ namespace LynkApi
                    
                     break;
                 case 4:
-                    //SearchByTitle.SearchTitle().Wait();//Metod + wait
                     WorkshopData.GetWorkshopData();
                     break;
                 case 5:
