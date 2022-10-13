@@ -74,7 +74,8 @@ namespace LynkApi
                    
                     break;
                 case 4:
-                    WorkshopData.GetWorkshopData();
+                    //WorkshopData.GetWorkshopData();
+                    ReadAllData.ListWorkshops();
                     break;
                 case 5:
                     ExitLynk.ExitProgram();//Metod för exit
