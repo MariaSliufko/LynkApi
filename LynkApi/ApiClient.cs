@@ -54,8 +54,9 @@ namespace LynkApi
                     throw new Exception(response.ReasonPhrase);
                 }
             }
-
         }
+
+        
 
         public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId) // get V metoden 
         {
@@ -78,8 +79,6 @@ namespace LynkApi
                     throw new Exception(response.ReasonPhrase); //initializes a new instance of exception class with response phrase sent by server and statuscode.
                 }
             }
-
-
         }
         public async Task<IEnumerable<AppointmentModel>?> GetAppointments(string workshopId)
         {
@@ -102,10 +101,6 @@ namespace LynkApi
                         throw new Exception(response.ReasonPhrase);
                     }
             }
-               
-              
-            
-
         }
 
         public async Task<IEnumerable<AppointmentModel>?> GetAllAppointments()
