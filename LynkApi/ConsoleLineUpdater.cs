@@ -23,7 +23,7 @@ namespace LynkApi
         public void RunSimulation() //method
         {
             double stepSize = _units / _steps;
-            int sleepMillisec = (int)(0.4 * _milliSec / _steps);
+            int sleepMillisec = (int)(0.4 * _milliSec / _steps); 
 
             for (int i = 0; i <= _units; i++)
             {

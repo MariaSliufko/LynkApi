@@ -25,17 +25,15 @@ namespace LynkApi
 
             Console.WriteLine("Confirm if you want to download and uppdate all data by typing Y: ");
             
-            string key = Console.ReadLine().ToUpper(); 
+            string key = Console.ReadLine().ToUpper();
 
             if (key == "Y")
             {
+
                 Console.WriteLine("Progress bar console simulation");
 
                 var progressBarSimulator = new ConsoleLineUpdater(units: 100, steps: 50, milliSec: 5000);
                 progressBarSimulator.RunSimulation();
-
-                Console.WriteLine("\nThe simulation completed successfully.");
-                Console.ReadKey();
 
                 var baseadress = "https://context-qa.lynkco.com/api/workshop/";
                 var apiToken = "y2TpY8nt029M~OC3NdK7tXnpF"; // "API_TOKEN"; Not able to use API_TOKEN to replace api token
@@ -104,8 +102,10 @@ namespace LynkApi
             else
             {
                 Startmenu.Menu();
-            }   
+            }
 
+            Console.WriteLine("\nThe simulation completed successfully.");
+            Console.ReadKey();
         }
     }
 }
