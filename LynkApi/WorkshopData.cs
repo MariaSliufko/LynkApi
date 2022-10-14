@@ -64,11 +64,17 @@ namespace LynkApi
             //    //Console.WriteLine(obj.DisplayName); // display name
             //}
 
-            var WorkshopGroupedByTimeZone = objResponse.OrderByDescending(objResponse => objResponse.TimeZone).GroupBy(objResponse => objResponse.TimeZone); //grouping workshops des and then by by timezone             //Method Syntax
-           
+            // ?? "STR"  <=>  (str == null) ? "STR" : str;
+
+            var WorkshopGroupedByTimeZone = objResponse.GroupBy(objResponse => objResponse.TimeZone ?? "no registerd") // grupperar efter tidszon, om det inte finns så läggs dem tsm i "No Time Zone"
+                .OrderByDescending(group => group.Count()); // sorterar desc efter hur många det finns i varje gruppering
+
+            Console.WriteLine("Showing info about " + objResponse.Count + " total workshops:"); // skriver ut totala antl WS
+            
             foreach (var group in WorkshopGroupedByTimeZone)
             {
-                Console.WriteLine("TimeZone " + group.Key + " has " + group.Count() + " workshops"); // skriver ut tidzonen och hur många WS som finns i varje tidzon
+                //Console.WriteLine("Workshops " + group.Key + " with " + group.Count() + " Timezone"); // skriver ut tidzonen och hur många WS som finns i varje tidzon
+                Console.WriteLine(group.Count() + " workshops has " + group.Key + " Timezone"); // skriver ut tidzonen och hur många WS som finns i varje tidzon
                 foreach (var WS in group)
                     Console.WriteLine("* " + " " + WS.DisplayName);
             }
