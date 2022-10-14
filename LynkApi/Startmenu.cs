@@ -22,10 +22,13 @@ namespace LynkApi
             {
                 Console.WriteLine(@"Main menu 
 1. Update script
-2. Lookup Workshop
-3. Lookup Vehicle
-4. Workshop summery
-5. Exit program. ");
+2. Search Workshop
+3. Search Vehicle
+4. Wilmas WS kod
+5. Marias WS kod
+6. Appointment summery
+7. Vehicle summery
+8. Exit program. ");
                 try
                 {
                     option = int.Parse(Console.ReadLine());
@@ -49,13 +52,20 @@ namespace LynkApi
                     break;
                 case 3:
                     SearchVehicle.getVehicle(); // exakt samma kod, som Appointments 
-                   
                     break;
                 case 4:
-                    //WorkshopData.GetWorkshopData();
-                    ReadAllData.ListWorkshops();
+                    WorkshopData.GetWorkshopData(); // Wilmas ws kod
                     break;
                 case 5:
+                    ReadAllData.ListWorkshops(); // marias WS kod
+                    break;
+                case 6:
+                    // Lägg in kod här
+                    break;
+                case 7:
+                    // lägg in kod här
+                    break;
+                case 8:
                     ExitLynk.ExitProgram();//Metod för exit
                     break;
                 default:
