@@ -22,7 +22,7 @@ namespace LynkApi
         public static void GetWorkshopData()
         {
             var baseadress = "https://context-qa.lynkco.com/api/workshop/";
-            var apiToken = ConfigurationManager.AppSettings["api_key"];
+            var apiToken = ConfigurationManager.AppSettings["api_key"]; //https://www.c-sharpcorner.com/blogs/how-to-encrypt-a-appsettings-key-in-webconfig
 
             ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
             var result =  api.GetWorkshops().Result;
