@@ -38,7 +38,7 @@ namespace LynkApi
         public async Task<IEnumerable<WorkshopModel>?> GetWorkshops() //async makes sure that our website doesnt lock up. IEnumerable supports a simple iteration over a (non-generic) collection.
         {
             //variabel workshopUri
-            var workshopUri = new Uri(BaseAddress, "locations/"); //puts together baseadress and endpoint
+            var workshopUri = new Uri(BaseAddress, "locations/?location=&all"); //puts together baseadress and endpoint
             
             using (HttpResponseMessage response = await Client.GetAsync(workshopUri)) //new call/request from our api client and wait for response
             {
