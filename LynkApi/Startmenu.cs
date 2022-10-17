@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LynkApi;
+using TestLynk;
 using Newtonsoft.Json.Linq;
-
+//using LynkProject;
 
 namespace LynkApi
 {
@@ -27,8 +28,7 @@ namespace LynkApi
 5. Marias WS kod
 6. Appointment summery
 7. Vehicle summery
-8. Testing
-9. Exit program. ");
+8. Exit program. ");
                 try
                 {
                     option = int.Parse(Console.ReadLine());
@@ -57,22 +57,15 @@ namespace LynkApi
                     WorkshopData.GetWorkshopData(); // Wilmas ws kod
                     break;
                 case 5:
-                   // ReadAllData.ListWorkshops(); // marias WS kod
+                    //ReadAllData.ListWorkshops(); // marias WS kod
                     break;
                 case 6:
-                    // Lägg in kod här
+                    AppointmentSummary.Sort();
                     break;
                 case 7:
                     // lägg in kod här
                     break;
                 case 8:
-                    //Console.WriteLine("New project file created");
-                    //Console.ReadLine();
-                    ReadAllData readAllDataObj = new ReadAllData();
-                    readAllDataObj.ReadAllDataNow(".json");
-                    break;
-                    
-                case 9:
                     ExitLynk.ExitProgram();//Metod för exit
                     break;
                 default:
