@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using LynkApi;
 using Newtonsoft.Json;
 using TestLynk;
+using System.Configuration;
+
 
 namespace LynkApi
 {
@@ -20,7 +22,7 @@ namespace LynkApi
         public static void GetWorkshopData()
         {
             var baseadress = "https://context-qa.lynkco.com/api/workshop/";
-            var apiToken = "y2TpY8nt029M~OC3NdK7tXnpF";
+            var apiToken = ConfigurationManager.AppSettings["api_key"];
 
             ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
             var result =  api.GetWorkshops().Result;
