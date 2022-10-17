@@ -28,7 +28,8 @@ namespace LynkApi
 5. Marias WS kod
 6. Appointment summery
 7. Vehicle summery
-8. Exit program. ");
+8. Read All Data
+9. Exit program. ");
                 try
                 {
                     option = int.Parse(Console.ReadLine());
@@ -66,6 +67,10 @@ namespace LynkApi
                     // lägg in kod här
                     break;
                 case 8:
+                    ReadAllData readAllDataObj = new ReadAllData();
+                    readAllDataObj.ReadAllDataNow(".json");
+                    break;
+                case 9:
                     ExitLynk.ExitProgram();//Metod för exit
                     break;
                 default:
