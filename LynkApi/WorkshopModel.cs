@@ -23,17 +23,18 @@ namespace LynkApi
         [JsonProperty("time_zone")]
         public string? TimeZone { get; set; }
 
+        [JsonProperty("Appointments")]
         public List<string> Appointments { get; set; } // lagt till dessa 2 listor strängar
         public List<string> Vehicles { get; set; } // string listor
 
         public WorkshopModel(string aLocationId, string aBackOfficeWorkshopId, string aDisplayName, string aTimeZone)
         {
-            LocationId = aLocationId;
-            BackOfficeWorkshopId = aBackOfficeWorkshopId;
-            DisplayName = aDisplayName;
-            TimeZone = aTimeZone;
-            Appointments = new List<string>(); // string listor som anges ovan skapar tomma nya listor, för att vi ska kunna lägga till för att vi ska kunna hämta alla V och alla AP för varje location id och lägga till de i en WS
-            Vehicles = new List<string>(); // string listor
+            this.LocationId = aLocationId;
+            this.BackOfficeWorkshopId = aBackOfficeWorkshopId;
+            this.DisplayName = aDisplayName;
+            this.TimeZone = aTimeZone;
+            this.Appointments = new List<string>(); // string listor som anges ovan skapar tomma nya listor, för att vi ska kunna lägga till för att vi ska kunna hämta alla V och alla AP för varje location id och lägga till de i en WS
+            this.Vehicles = new List<string>(); // string listor
         }
 
         public WorkshopModel()

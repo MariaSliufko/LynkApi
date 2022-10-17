@@ -5,47 +5,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestLynk;
+using System.IO;
 
 namespace LynkApi
 {
     public class ReadAllData
     {
-        public static void ListWorkshops()
+
+       
+        public bool ReadAllDataNow(string fileName) //method that takes in parameter string filename
         {
-            string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, @"data\workshops"); // skapar filvägen
-            string[] path = Directory.GetFiles(dataDirectyory);
+            string dataDirectory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, @"data\workshops"); // creates pathway
+            string[] path = Directory.GetFiles(dataDirectory); // directory = method for enumering through directory. Returns array of full name + paths for files in directory
 
-            foreach (string filename in path) //skapar en lista med varje filnamn till de workshops som finns i foldern
-            {
-                Console.WriteLine(filename);
-            }
+            //foreach (string filename in path) //Generates a list of pathwaynames for the files in folder workshop
+            //{
+            //    Console.WriteLine(filename);
+            //}
 
-            string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //a method that gets the path to specified folder
-            StringBuilder sb = new StringBuilder(); //doesn’t create a new object in the memory but dynamically expands the needed memory to accommodate the modified or new string.
-            //foreach path in folder do something
-            foreach (string jsonName in Directory.GetFiles(dataDirectyory, "*.json")) //C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\data\workshops\1.json
+            string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //method to get specified folder
+            
+            foreach (var file in Directory.EnumerateFiles(dataDirectory, "*.json")) //foreach file in specified folder. Loops through all
             {
-                //initializez a new streamreader that takes in the construktor the file to open
-                using (StreamReader sr = new StreamReader(jsonName)) //reader is for pullinf info out of the file and writer to put info in //using will dispose the stuff in the block
+                var readFiles = File.ReadAllText(file); //opens textfile, reads it and closes it
+                var serializedObj = JsonConvert.SerializeObject(readFiles); //Jsonconvert - method for converting between .NET types and json 
+               //deserializes json to specefied .NET type and returns deserilaized object from json string
+                WorkshopModel deserializedObj = JsonConvert.DeserializeObject<WorkshopModel>(readFiles);
+                Console.WriteLine("Location - " + deserializedObj.LocationId);
+                Console.WriteLine("Back Office Workshop ID ---" + deserializedObj.BackOfficeWorkshopId);
+                Console.WriteLine("Timezone ---" + deserializedObj.TimeZone);
+                Console.WriteLine("Display name ---" + deserializedObj.DisplayName);
+                foreach (string obj in deserializedObj.Appointments)
                 {
-                    sb.AppendLine(jsonName.ToString()); //reads the path in string format
-                    sb.AppendLine("= = = = = ="); // writes out === between the path and content
-                    sb.Append(sr.ReadToEnd()); // reads all content
-                    sb.AppendLine(); //This method append(adds) the string with a newline at the end
-                    sb.AppendLine();
-
+                    Console.WriteLine("Appointment ---" + obj); //writes out appointment id
                 }
             }
-
-            // var Workshop = JsonConvert.SerializeObject(sb);
-           // var objResponse = JsonConvert.DeserializeObject<List<WorkshopModel>>(sb);
-            using (StreamWriter outfile = new StreamWriter(mydocpath + @"\AllTxtFiles.json")) //puts my docpath and looks at all json files
-            {
-                outfile.Write(sb.ToString()); //StreamWriter.Write() method is responsible for writing text to a stream. 
-                Console.WriteLine(sb.ToString());
-            }
-
            
+            Console.ReadLine();
+            return false;
+
+
+
 
         }
     }
