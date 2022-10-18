@@ -19,7 +19,7 @@ namespace LynkApi
         // C:\Users\masl\source\repos\LynkApi\LynkApi\bin\Debug\net6.0\data
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen C:/documents/maria/github/lykapi/bin + /data
         static string dataFile = Path.Combine(dataDirectyory, "allAppointmentData.json"); // skapar filen
-
+        // GÖR DENNA ASYNC MED AWAIT 
         public static void FetchDataFromDatabase()
         {
 
