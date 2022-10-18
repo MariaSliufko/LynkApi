@@ -32,7 +32,7 @@ namespace LynkApi
 
                 Console.WriteLine("Progress bar console simulation");
 
-                var progressBarSimulator = new ConsoleLineUpdater(units: 100, steps: 50, milliSec: 5000);
+                var progressBarSimulator = new ConsoleLineUpdater(units: 100, steps: 50, milliSec: 5000); //ändra fasta parametrar
                 progressBarSimulator.RunSimulation();
 
                 var baseadress = "https://context-qa.lynkco.com/api/workshop/";
