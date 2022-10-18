@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 
 namespace LynkApi
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    //Root myDeserializedClass = JsonConvert.DeserializeObject<Workshop>(result);
     public class WorkshopModel
     {
         [JsonProperty("location_id")]
