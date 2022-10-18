@@ -63,7 +63,7 @@ namespace LynkApi
                     AppointmentSummary.Sort();
                     break;
                 case 7:
-                    // lägg in kod här
+                    VehicleSummery.Sort();
                     break;
                 case 8:
                     ExitLynk.ExitProgram();//Metod för exit
