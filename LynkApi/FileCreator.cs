@@ -26,33 +26,33 @@ namespace LynkApi
         static List<AppointmentModel> appointmentList = new List<AppointmentModel>(); // skapar en appointmentList
         static List<VehicleModel> vehicleList = new List<VehicleModel>(); // skapar en vehicleList
 
-        public static async void FetchDataFromDatabase()
+        public static void FetchDataFromDatabase()
         {
 
-           // Console.WriteLine("Confirm if you want to download and uppdate all data by typing Y: ");
+            Console.WriteLine("Confirm if you want to download and uppdate all data by typing Y: ");
             
-           // string key = Console.ReadLine().ToUpper();
+            string key = Console.ReadLine().ToUpper();
 
-            if ( true) //key == "Y")
+            if (key == "Y")
             {
+                var progressSimulator = new ConsoleLineUpdater();
 
-                Console.WriteLine("Progress bar console simulation");
+                Task.Run(() =>
+                {
+                    progressSimulator.start("Connecting to API");
+                });
 
-                var progressBarSimulator = new ConsoleLineUpdater(units: 100, steps: 50, milliSec: 5000); //ändra fasta parametrar
-               // progressBarSimulator.RunSimulation();
-
-               
-               
                 api = new ApiClient(new Uri(baseadress), apiToken);
 
                 var workshops = api.GetWorkshops().Result; // hämtar alla WS
 
+        
 
                 // tanken är sen att vi ska lagra alla AP och alla V i dessa listor, kmr bli många rader långa 
 
                 if (!Directory.Exists(dataDirectyory)) // om directoryn inte finns för workshops
                 {
-                    Console.WriteLine("No folders detected. \n Creating data directory");
+                    progressSimulator.setText("Creating directories");
                     Directory.CreateDirectory(dataDirectyory); // så sklapar den mappen för Workshops
                 }
 
@@ -74,65 +74,76 @@ namespace LynkApi
 
 
 
-                Console.WriteLine("Fetching data START");
+                progressSimulator.setText("Creating workshops");
 
                 var tasks1 = workshops.Select(w => createWorkshopFiles(w));
 
+               
                 Task.WhenAll(tasks1).Wait();
 
-                Console.WriteLine("Fetching data DONE");
 
-                Console.WriteLine("Creating appointments START");
+
+;
+
+                progressSimulator.setText("Creating appointments ");
 
                 var tasks2 = appointmentList.Select(a => createAppointmentFiles(a));
 
                 Task.WhenAll(tasks2).Wait();
-                Console.WriteLine("Creating appointments DONE");
 
-                Console.WriteLine("Creating vehicles START");
+
+
+
+
+
+                progressSimulator.setText("Creating vehicles");
 
                 var tasks3 = vehicleList.Select(v => createVehicleFiles(v));
 
                 Task.WhenAll(tasks3).Wait();
-                Console.WriteLine("Creating vehicles DONE");
 
 
 
-               
+                progressSimulator.done();
+
+
+
             }
             else
             {
                 Startmenu.Menu();
             }
 
-            Console.WriteLine("\nThe simulation completed successfully.");
-            Console.ReadKey();
         }
 
         private static async Task createVehicleFiles(VehicleModel vehicle)
         {
             await Task.Run(() =>
             {
-
-               
                 var file = dataDirectyory + "/vehicles/" + vehicle.VehicleId + ".json";
 
-                File.WriteAllText(file, JsonConvert.SerializeObject(vehicle)); // serialiserar objekten till json
-
-               
+                try {
+                    File.WriteAllText(file, JsonConvert.SerializeObject(vehicle)); // serialiserar objekten till json
+                }
+                catch (Exception e) // om en fil ändras av 2 Task samtidigt
+                {
+                    Console.Error.WriteLine(e.Message);
+                    Console.Error.WriteLine(vehicle);
+                }
             });
 
         }
 
         private static async Task createAppointmentFiles(AppointmentModel appointment)
         {
-                await Task.Run(() =>
-                {
-
-                    var file = dataDirectyory + "/appointments/" + appointment.AppointmentId + ".json"; // för varje AP lägger vi i AP mappen och AP id samma som ovan med idt och namnet som rad 58
-                    File.WriteAllText(file, JsonConvert.SerializeObject(appointment));
-                });
+            await Task.Run(() =>
+            {
+                var file = dataDirectyory + "/appointments/" + appointment.AppointmentId + ".json"; // för varje AP lägger vi i AP mappen och AP id samma som ovan med idt och namnet som rad 58
+                File.WriteAllText(file, JsonConvert.SerializeObject(appointment));
+            });
         }
+
+      
 
         private static async Task createWorkshopFiles(WorkshopModel workshop)
         {
@@ -140,14 +151,20 @@ namespace LynkApi
             await Task.Run(() =>
             {
                 
-
                 var appointments = api.GetAppointments(workshop.LocationId).Result;   // hämtar alla AP från APIT med location id 
-                appointmentList.AddRange(appointments); // lägger till alla AP i listan, rage lägger till flera saker i listan ex om de kmr 100 st nya AP läggs det till i listan som vi skapade först
+
+                lock (appointmentList)
+                {
+                    appointmentList.AddRange(appointments); // lägger till alla AP i listan, rage lägger till flera saker i listan ex om de kmr 100 st nya AP läggs det till i listan som vi skapade först
+                }
                 workshop.Appointments = appointments.Select(a => a.AppointmentId).ToList(); //lamda uttryck, i själva WS:s sträng lista så lägger vi till varje AP (för varje a i appointment så tar vi AP id bara och så gör vi det till en lista 
                                                                                             // denna raden skapar stränglistan med alla Ap ids, så om en AP har idt 23 och ligger på WS med id 1 så kmr den filen se ut såhär 1.23 . dvs wsid+APid blir namnet på filen
 
                 var vehicles = api.GetVehicles(workshop.LocationId).Result; // samma på V, vi hämtar alla V för den WS 
-                vehicleList.AddRange(vehicles); // lägger till varje V i den 1a listan vi skapade 
+
+                lock (vehicleList) { 
+                    vehicleList.AddRange(vehicles); // lägger till varje V i den 1a listan vi skapade 
+                }
                 workshop.Vehicles = vehicles.Select(v => v.VehicleId).ToList(); // sen lägger vi till varje V id i WS som sträng, den tar v:t för vehicle och hämtar idt och gör det till en lista 
 
                 
@@ -156,45 +173,6 @@ namespace LynkApi
                
             });
 
-
         }
     }
 }
-            /*
-            var Appointments = JsonConvert.SerializeObject(result); // serialiserar objekten till json
-            Console.WriteLine(Appointments); // skriver ut json
-
-            if (!Directory.Exists(dataDirectyory)) // om directoryn inte finns
-            {
-                Directory.CreateDirectory(dataDirectyory); // skapa map
-                File.WriteAllText(dataFile, Appointments); // skriver ut json till filen
-            }
-            else
-            {
-                if (!File.Exists(dataFile)) // om directoryn finns men inte filen
-                {
-                    File.WriteAllText(dataFile, Appointments);
-                }
-                else // om både directory och filen finns
-                {
-                    File.Delete(dataFile);
-                    File.WriteAllText(dataFile, Appointments);
-                }
-            }
-            // om man har en data fil gör såhäer
-            string jsonString = File.ReadAllText(dataFile);
-
-            var objResponse = JsonConvert.DeserializeObject<List<AppointmentModel>>(jsonString); //skriver om JSON till .NET objekt
-            foreach (var obj in objResponse) // för varje obj i response skriv ut namnet på WS
-            {
-                Console.WriteLine(obj.LocationId); //DisplayName
-
-            }
-
-        }
-
-
-    }
-}
-
-*/

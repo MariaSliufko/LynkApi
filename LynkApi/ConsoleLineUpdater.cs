@@ -8,52 +8,35 @@ namespace LynkApi
 {
     public class ConsoleLineUpdater
     {
-        private readonly int _units;
-        private readonly double _steps;
-        private readonly int _milliSec;
 
-        public ConsoleLineUpdater(int units, double steps, int milliSec) //constructer with parameters
+        private string _text = "";
+        private string _dots = "";
+        private bool _done = false;
+        public void start(string text)
         {
-            _units = units;
-            _steps = steps;
-            _milliSec = milliSec;
-        }
-
-
-        public void RunSimulation() //method
-        {
-            double stepSize = _units / _steps;
-            int sleepMillisec = (int)(0.4 * _milliSec / _steps); 
-
-            for (int i = 0; i <= _units; i++)
+            Console.Clear();
+            _text = text;
+            _dots = "";
+            while (!_done)
             {
-                StringBuilder filledProgressSpace = new StringBuilder();
-
-                int filledSteps = 0;
-                for (double j = 0; j < i; j += stepSize)
-                {
-                    filledProgressSpace.Append("=");
-                    filledSteps++;
-                }
-
-                StringBuilder emptyProgressSpace = new StringBuilder();
-
-                double absDifference = Math.Abs(i / stepSize - _steps);
-                if (absDifference >= 1)
-                {
-                    emptyProgressSpace.Append(">");
-                    filledSteps++;
-                }
-
-                for (double j = 0; j < _steps - filledSteps; j++) emptyProgressSpace.Append(" ");
-
-
-                Console.Write($"\rThe current progress: [{filledProgressSpace}{emptyProgressSpace}] {i}% ");
-                Thread.Sleep(sleepMillisec);
-
+                _dots += ". ";
+                Console.Write($"\rCurrent process: {_text}{_dots}");
+                Thread.Sleep(500);
             }
         }
-
-
+        public void setText(string text)
+        {
+            _text = text;
+            _dots = "";
+            Console.Clear();
+            Console.Write($"\rCurrent process: {_text}{_dots}");
+        }
+        public void done()
+        {
+            _done = true;
+            Console.Clear();
+            Console.Write($"\rCurrent process: DONE!");
+            Console.WriteLine();
+        }
     }
 }
