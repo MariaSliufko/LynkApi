@@ -82,9 +82,6 @@ namespace LynkApi
                 Task.WhenAll(tasks1).Wait();
 
 
-
-;
-
                 progressSimulator.setText("Creating appointments ");
 
                 var tasks2 = appointmentList.Select(a => createAppointmentFiles(a));
@@ -92,16 +89,11 @@ namespace LynkApi
                 Task.WhenAll(tasks2).Wait();
 
 
-
-
-
-
                 progressSimulator.setText("Creating vehicles");
 
                 var tasks3 = vehicleList.Select(v => createVehicleFiles(v));
 
                 Task.WhenAll(tasks3).Wait();
-
 
 
                 progressSimulator.done();
