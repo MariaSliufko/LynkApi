@@ -3,7 +3,8 @@ using TestLynk;
 
 namespace LynkApi
 {
-    public class AppointmentSummary // gör om data dirctory till en prperty som man kan anropa vartsom helst i prodjektet (public)
+    public class AppointmentSummary
+    // gör om data dirctory till en prperty som man kan anropa vartsom helst i prodjektet (public)
     {
         //Get the Path of the data/workshops folder
         static string dataDirectory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data/workshops");
@@ -17,13 +18,31 @@ namespace LynkApi
 
             //Console.WriteLine("Showing info about " + files.Count() + " total appointments:"); //skriver ut totala antl AP
 
-            foreach (var file in files)
+            List<WorkshopModel> workshops = new List<WorkshopModel>();
+
+            foreach (var file in files) // fixa skriva ut alla ant AP och order by dec
             {
                 string jsonString = File.ReadAllText(file); // Read the text from the file
+               
+                WorkshopModel obj = JsonConvert.DeserializeObject<WorkshopModel>(jsonString); // Convert the file into WorkshopModel
 
-                var obj = JsonConvert.DeserializeObject<WorkshopModel>(jsonString); // Convert the file into WorkshopModel
-                Console.WriteLine("* " + obj.DisplayName+ " has "+ obj.Appointments.Count() + " total appointments" ); ////CW the Obj display name and Count of Appointments
+                workshops.Add(obj); // lägg till i lista
+
             }
+
+            int numerOfAppoinments = 0;
+            var workshopsOrdered = workshops.OrderByDescending(w => w.Appointments.Count());
+
+            foreach (var shop in workshopsOrdered)
+            {
+                numerOfAppoinments += shop.Appointments.Count();
+
+                Console.WriteLine(shop.Appointments.Count() + " " + shop.DisplayName);
+            }
+
+            Console.WriteLine("Total numer of Appointments: " + numerOfAppoinments);
+
+
         }
     }
 }

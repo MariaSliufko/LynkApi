@@ -38,7 +38,7 @@ namespace LynkApi
         public async Task<IEnumerable<WorkshopModel>?> GetWorkshops() //async makes sure that our website doesnt lock up. IEnumerable supports a simple iteration over a (non-generic) collection.
         {
             //variabel workshopUri
-            var workshopUri = new Uri(BaseAddress, "locations/?all?next"); //puts together baseadress and endpoint
+            var workshopUri = new Uri(BaseAddress, "locations/?all"); //puts together baseadress and endpoint
             
             using (HttpResponseMessage response = await Client.GetAsync(workshopUri)) //new call/request from our api client and wait for response
             {
@@ -61,7 +61,7 @@ namespace LynkApi
         public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId) // get V metoden 
         {
 
-            var appointmentUri = new Uri(BaseAddress, "vehicles/?location=" + workshopId + "&all?next");
+            var appointmentUri = new Uri(BaseAddress, "vehicles/?location=" + workshopId + "&all");
 
 
             using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
@@ -83,7 +83,7 @@ namespace LynkApi
         public async Task<IEnumerable<AppointmentModel>?> GetAppointments(string workshopId)
         {
 
-            var appointmentUri = new Uri(BaseAddress, "appointments/?location=" + workshopId + "&all?next");
+            var appointmentUri = new Uri(BaseAddress, "appointments/?location=" + workshopId + "&all");
 
             
             using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
@@ -100,36 +100,11 @@ namespace LynkApi
                     {
                         throw new Exception(response.ReasonPhrase);
                     }
+
             }
-        }
-
-        public async Task<IEnumerable<AppointmentModel>?> GetAllAppointments()
-        {
-
-            var appointmentUri = new Uri(BaseAddress, "appointments/");
-
-            //https://context-qa.lynkco.com/api/workshop/appointments?location=all
-
-            using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
-            {
-
-                if (response.IsSuccessStatusCode)
-                {
-
-                    string json = await response.Content.ReadAsStringAsync();
-                    var myAppointments = JsonConvert.DeserializeObject<AppointmentJSON>(json);
-                    return myAppointments?.AppointmentList;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
-            }
-
-
-
 
         }
 
     }
+
 }
