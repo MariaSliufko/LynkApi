@@ -16,7 +16,6 @@ namespace LynkApi
 {
     public class WorkshopData
     {
-
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen
         static string dataFile = Path.Combine(dataDirectyory, "data.json"); // skapar filen
         public static void GetWorkshopData()
@@ -27,17 +26,7 @@ namespace LynkApi
             ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
             var result =  api.GetWorkshops().Result;
 
-
-            //foreach (var workshop in result) // objekten
-            //{
-            //    Console.WriteLine("Location Id: " + workshop.LocationId);
-            //    Console.WriteLine("Back Office Workshop Id: " + workshop.BackOfficeWorkshopId);
-            //    Console.WriteLine("Display Name: " + workshop.DisplayName);
-            //    Console.WriteLine("Timezone: " + workshop.TimeZone);
-            //}
-
             var Workshop = JsonConvert.SerializeObject(result); // serialiserar objekten till json
-            //Console.WriteLine(Workshop); // skriver ut json
 
             if (!Directory.Exists(dataDirectyory)) // om directoryn inte finns
             {
@@ -56,9 +45,7 @@ namespace LynkApi
                     File.WriteAllText(dataFile, Workshop);
                 }
             }
-            // om man har en data fil gör såhär
-            string jsonString = File.ReadAllText(dataFile);
-
+            string jsonString = File.ReadAllText(dataFile); // datafilen
             var objResponse = JsonConvert.DeserializeObject<List<WorkshopModel>>(jsonString); //skriver om JSON till .NET objekt
 
             // ?? "STR"  <=>  (str == null) ? "STR" : str;
@@ -73,6 +60,11 @@ namespace LynkApi
                 foreach (var WS in group)
                     Console.WriteLine("* " + " " + WS.DisplayName);
             }
+
+            Console.WriteLine("\nPress any key to return to menu");
+            Console.ReadKey(true);
+            Console.Clear();
+            Startmenu.Menu();
         }
     }
 }

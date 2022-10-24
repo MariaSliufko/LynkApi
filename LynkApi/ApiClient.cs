@@ -25,13 +25,11 @@ namespace LynkApi
             }
 
             this.BaseAddress = baseAddress ?? throw new ArgumentNullException(nameof(baseAddress));
-            
             this.Client = new HttpClient();
             this.Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);  //authentication header
         }
 
         public HttpClient Client { get; } //properties
-
         public Uri BaseAddress { get; }
         public string Query { get; } //?
         
@@ -47,7 +45,6 @@ namespace LynkApi
                     string json = await response.Content.ReadAsStringAsync(); //awaits the response and content is the content of my request
                     var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json); //deserialize 
                     return myWorkshops?.WorkshopList;
-                   
                 }
                 else
                 {
@@ -56,20 +53,14 @@ namespace LynkApi
             }
         }
 
-        
-
         public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId) // get V metoden 
         {
-
             var appointmentUri = new Uri(BaseAddress, "vehicles/?location=" + workshopId + "&all");
-
 
             using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
             {
-
                 if (response.IsSuccessStatusCode)
                 {
-                    
                     string json = await response.Content.ReadAsStringAsync();
                     var myVechicles = JsonConvert.DeserializeObject<VehicleJSON>(json);
                     return myVechicles?.VehicleList; //returns list of vehicles
@@ -82,16 +73,12 @@ namespace LynkApi
         }
         public async Task<IEnumerable<AppointmentModel>?> GetAppointments(string workshopId)
         {
-
             var appointmentUri = new Uri(BaseAddress, "appointments/?location=" + workshopId + "&all");
-
             
             using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
             {
-                
                     if (response.IsSuccessStatusCode)
                     {
-
                         string json = await response.Content.ReadAsStringAsync();
                         var myAppointments = JsonConvert.DeserializeObject<AppointmentJSON>(json);
                         return myAppointments?.AppointmentList;
@@ -100,11 +87,7 @@ namespace LynkApi
                     {
                         throw new Exception(response.ReasonPhrase);
                     }
-
             }
-
         }
-
     }
-
 }

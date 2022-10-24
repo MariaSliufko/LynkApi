@@ -11,18 +11,10 @@ namespace LynkApi
 {
     public class ReadAllData
     {
-
-       
         public bool ReadAllDataNow(string fileName) //method that takes in parameter string filename
         {
             string dataDirectory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, @"data\workshops"); // creates pathway
             string[] path = Directory.GetFiles(dataDirectory); // directory = method for enumering through directory. Returns array of full name + paths for files in directory
-
-            //foreach (string filename in path) //Generates a list of pathwaynames for the files in folder workshop
-            //{
-            //    Console.WriteLine(filename);
-            //}
-
             string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //method to get specified folder
             
             foreach (var file in Directory.EnumerateFiles(dataDirectory, "*.json")) //foreach file in specified folder. Loops through all
@@ -40,13 +32,8 @@ namespace LynkApi
                     Console.WriteLine("Appointment ---" + obj); //writes out appointment id
                 }
             }
-           
             Console.ReadLine();
             return false;
-
-
-
-
         }
     }
 }

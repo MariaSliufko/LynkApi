@@ -46,7 +46,6 @@ namespace LynkApi
             [JsonProperty("scheduled_work_end_time")]
             public DateTime? ScheduledWorkEndTime { get; set; }
 
-
             [JsonConstructor]
             public AppointmentModel(
             [JsonProperty("appointment_id")] string appointmentId,
@@ -60,8 +59,8 @@ namespace LynkApi
             [JsonProperty("scheduled_vehicle_pickup_time")] DateTime scheduledVehiclePickupTime,
             [JsonProperty("status")] string status,
             [JsonProperty("scheduled_work_start_time")] DateTime? scheduledWorkStartTime,
-            [JsonProperty("scheduled_work_end_time")] DateTime? scheduledWorkEndTime
-        )
+            [JsonProperty("scheduled_work_end_time")] DateTime? scheduledWorkEndTime)
+
             {
                 this.AppointmentId = appointmentId;
                 this.LocationId = locationId;
@@ -82,8 +81,6 @@ namespace LynkApi
             [JsonProperty("items")]
             public List<AppointmentModel>? AppointmentList { get; set; }
         }
-
-       
     }
 }
 

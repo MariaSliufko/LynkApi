@@ -8,9 +8,8 @@ namespace LynkApi
 {
     public class ExitLynk
     {
-        public static void ExitProgram()//Metod namn 
+        public static void ExitProgram()
         {
-
             Console.Write("Press any key to exit the program");
             Console.ReadKey(true);
             Console.Clear();

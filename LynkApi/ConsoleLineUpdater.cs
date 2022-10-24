@@ -8,7 +8,6 @@ namespace LynkApi
 {
     public class ConsoleLineUpdater
     {
-
         private string _text = "";
         private string _dots = "";
         private bool _done = false;
@@ -37,6 +36,11 @@ namespace LynkApi
             Console.Clear();
             Console.Write($"\rCurrent process: DONE!");
             Console.WriteLine();
+
+            Console.WriteLine("\nPress any key to return to menu");
+            Console.ReadKey(true);
+            Console.Clear();
+            Startmenu.Menu();
         }
     }
 }
