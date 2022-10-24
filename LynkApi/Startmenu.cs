@@ -15,21 +15,19 @@ namespace LynkApi
     {
         public static void Menu()//Metod
         {
-            int option = 0;//Börja med värde 0
+            int option = 0;//Start VÄrde 0
 
-            bool isInvalidInput = false;  // ändrat menyval
+            bool isInvalidInput = false;
             do
             {
                 Console.WriteLine(@"Main menu 
 1. Update script
 2. Search Workshop
 3. Search Vehicle
-4. Wilmas WS kod
-5. Marias WS kod
-6. Appointment summery
-7. Vehicle summery
-8. Read All Data
-9. Exit program. ");
+4. Workshop summery
+5. Appointment summery
+6. Vehicle summery
+7. Exit program. ");
                 try
                 {
                     option = int.Parse(Console.ReadLine());
@@ -52,26 +50,23 @@ namespace LynkApi
                     SearchWorkshop.getWorkshop();
                     break;
                 case 3:
-                    SearchVehicle.getVehicle(); // exakt samma kod, som Appointments 
+                    SearchVehicle.getVehicle(); // exakt samma kod som Appointments 
                     break;
                 case 4:
-                    WorkshopData.GetWorkshopData(); // Wilmas ws kod
+                    WorkshopData.GetWorkshopData();
                     break;
                 case 5:
-                    //ReadAllData.ListWorkshops(); // marias WS kod
-                    break;
-                case 6:
                     AppointmentSummary.Sort();
                     break;
-                case 7:
+                case 6:
                     VehicleSummery.Sort();
                     break;
-                case 8:
-                    ReadAllData readAllDataObj = new ReadAllData();
-                    readAllDataObj.ReadAllDataNow(".json");
-                    break;
-                case 9:
-                    ExitLynk.ExitProgram();//Metod för exit
+                //case 7:
+                //    ReadAllData readAllDataObj = new ReadAllData();
+                //    readAllDataObj.ReadAllDataNow(".json");
+                //    break;
+                case 7:
+                    ExitLynk.ExitProgram();
                     break;
                 default:
                     Console.WriteLine("Invalid input, try again!");
@@ -86,7 +81,5 @@ namespace LynkApi
         {
             Menu();
         }
-
     }
-
 }

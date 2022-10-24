@@ -11,7 +11,6 @@ namespace LynkApi
     public class SearchVehicle
     {
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen
-
         public static void getVehicle()
         {
 
@@ -19,7 +18,7 @@ namespace LynkApi
             string vId = Console.ReadLine();
 
             var dir = dataDirectyory + "/vehicles/" + vId + ".json";
-            // variablen dir = är data patcchen + viachles mappen +  Viachle id med matchade id + .json
+            // variablen dir = är data pathen + viachles mappen +  Viachle id med matchade id + .json
             // aka sökvägen till filen som vi vill läsa in
 
             if (File.Exists(dir)) // om idt finns 
@@ -35,6 +34,11 @@ namespace LynkApi
             {
                 Console.WriteLine("Vehicle ID not found");
             }
+
+            Console.WriteLine("\nPress any key to return to menu");
+            Console.ReadKey(true);
+            Console.Clear();
+            Startmenu.Menu();
         }
     }
 }

@@ -24,7 +24,6 @@ namespace LynkApi
         [JsonProperty("Appointments")]
         public List<string> Appointments { get; set; } // lagt till dessa 2 listor strängar
         public List<string> Vehicles { get; set; } // string listor
-
         public WorkshopModel(string aLocationId, string aBackOfficeWorkshopId, string aDisplayName, string aTimeZone)
         {
             this.LocationId = aLocationId;
@@ -34,7 +33,6 @@ namespace LynkApi
             this.Appointments = new List<string>(); // string listor som anges ovan skapar tomma nya listor, för att vi ska kunna lägga till för att vi ska kunna hämta alla V och alla AP för varje location id och lägga till de i en WS
             this.Vehicles = new List<string>(); // string listor
         }
-
         public WorkshopModel()
         {
         }
@@ -44,11 +42,9 @@ namespace LynkApi
             throw new NotImplementedException();
         }
     }
-
     public class WorkshopJSON //i rooten av jSON har vi items.i denna klassen har vi en jsonproperty den items innehåller en lista på workshops. sen kommer vi i klassen där uppe.
     {
         [JsonProperty("items")] //workshopList innehåller en lista med propertys från klassen workshop.
         public List<WorkshopModel>? WorkshopList { get; set; }
     }
-   
 }

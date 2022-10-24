@@ -8,19 +8,15 @@ using TestLynk;
 
 namespace LynkApi
 {
-    internal class AppointmentData : WorkshopData
+    public class AppointmentData : WorkshopData
     {
-
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "appointmentData"); // skapar filvägen
         static string dataFile = Path.Combine(dataDirectyory, "appointmentData.json"); // skapar filen
-
        // private static string workshopId;
-
         public static void Appointments()
         {
             var baseadress = "https://context-qa.lynkco.com/api/workshop/";
             var apiToken = "y2TpY8nt029M~OC3NdK7tXnpF";
-
             ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
 
             Console.WriteLine("Enter location id to view it's appointments: ");
@@ -29,7 +25,6 @@ namespace LynkApi
             if (workshopId != null)
             {
                 api = new ApiClient(new Uri(baseadress + workshopId), apiToken);
-
                 var result = api.GetAppointments(workshopId).Result;
                 
                 foreach (var appointment in result)
@@ -47,7 +42,6 @@ namespace LynkApi
                     Console.WriteLine("Scheduled Work Start Time: " + appointment.ScheduledWorkStartTime);
                     Console.WriteLine("Scheduled Work End Time: " + appointment.ScheduledWorkEndTime);
                 }
-
 
                 var Appointment = JsonConvert.SerializeObject(result); // serialiserar objekten till json
                 Console.WriteLine(Appointments); // skriver ut json
@@ -69,34 +63,18 @@ namespace LynkApi
                         File.WriteAllText(dataFile, Appointment);
                     }
                 }
-                // om man har en data fil gör såhäer
                 string jsonString = File.ReadAllText(dataFile);
 
                 var objResponse = JsonConvert.DeserializeObject<List<AppointmentModel>>(jsonString); //skriver om JSON till .NET objekt
                 foreach (var obj in objResponse) // för varje obj i response skriv ut namnet på WS
                 {
                     Console.WriteLine(obj.LocationId); //DisplayName
-
                 }
             }
             else
             {
                 Console.WriteLine("No matching workshop id was found");
             }
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

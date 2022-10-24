@@ -11,14 +11,11 @@ namespace LynkApi
     public class SearchWorkshop
     {
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen
-
         public static void getWorkshop()
         {
             Console.WriteLine("Type Workshop ID:");
             string wId = Console.ReadLine(); // skriv in WS id,
-
             var dir = dataDirectyory + "/workshops/" + wId + ".json"; // så skapas sökvägen "dirr" döpa om till path, om vi söker på tex 1 så blir sökvägen Workshops.1.json
-
 
             if (File.Exists(dir)) // finns denna sökväg / finns denna fil?
             {
@@ -31,9 +28,13 @@ namespace LynkApi
             }
             else
             {
-                Console.WriteLine("Workshop ID not found"); // om WS idt ej finns skrivs detta ut 
+                Console.WriteLine("Workshop ID not found"); // om WS idt ej finns skrivs detta ut
             }
-        }
 
+            Console.WriteLine("\nPress any key to return to menu");
+            Console.ReadKey(true);
+            Console.Clear();
+            Startmenu.Menu();
+        }
     }
 }

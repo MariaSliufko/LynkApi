@@ -8,26 +8,19 @@ namespace LynkApi
     {
         //Get the Path of the data/workshops folder
         static string dataDirectory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data/workshops");
-        /// <summary>
-        /// Fetch the files and convert from json into the WorkshopModel
-        /// </summary>
+        // Summary: Fetch the files and convert from json into the WorkshopModel
         public static void Sort() // get Ap by decending
         {
             var files = Directory.GetFiles(dataDirectory); // Get all the files from the directory
-            // LÄGG OrderBy på Files
-
-            //Console.WriteLine("Showing info about " + files.Count() + " total appointments:"); //skriver ut totala antl AP
 
             List<WorkshopModel> workshops = new List<WorkshopModel>();
 
-            foreach (var file in files) // fixa skriva ut alla ant AP och order by dec
+            foreach (var file in files)
             {
                 string jsonString = File.ReadAllText(file); // Read the text from the file
                
                 WorkshopModel obj = JsonConvert.DeserializeObject<WorkshopModel>(jsonString); // Convert the file into WorkshopModel
-
                 workshops.Add(obj); // lägg till i lista
-
             }
 
             int numerOfAppoinments = 0;
@@ -41,8 +34,10 @@ namespace LynkApi
             }
 
             Console.WriteLine("Total numer of Appointments: " + numerOfAppoinments);
-
-
+            Console.WriteLine("\nPress any key to return to menu");
+            Console.ReadKey(true);
+            Console.Clear();
+            Startmenu.Menu();
         }
     }
 }

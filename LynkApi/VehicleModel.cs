@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace LynkApi
 {
     public class VehicleModel // exakt samma som ws model mer elr mindre 
-    { 
-
+    {
             [JsonProperty("location_id")]
             public string? LocationId { get; set; }
 
@@ -22,14 +21,11 @@ namespace LynkApi
 
             [JsonProperty("last_ingestion_time")]
             public string? LastIgnestionTime { get; set; }
-        
         public class VehicleJSON
         {
             [JsonProperty("items")] // //vehicleList innehåller en lista med propertys från klassen vehicle.
             public List<VehicleModel>? VehicleList { get; set; }
         }
-
-       
     }
 }
 
