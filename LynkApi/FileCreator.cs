@@ -32,7 +32,6 @@ namespace LynkApi
 
             if (key == "Y")
             {
-
                 Task.Run(() =>
                 {
                     progressSimulator.start("Connecting to API");
@@ -63,25 +62,19 @@ namespace LynkApi
                     Directory.CreateDirectory(dataDirectyory + "/vehicles"); // så skapar den en map för vehicles
                 }
 
-                finished = 0;
-                progressSimulator.setText($"Creating workshops {finished}/{workshops.Count()} ");
-
+                finished = 0; // starts at 0 and its going to count up later in the code
+                progressSimulator.setText($"Creating workshops {finished}/{workshops.Count()} "); // showes progress number
                 var tasks1 = workshops.Select(w => createWorkshopFiles(w));
-
                 Task.WhenAll(tasks1).Wait();
 
                 progressSimulator.setText("Creating appointments");
-
                 finished = 0;
                 var tasks2 = appointmentList.Select(a => createAppointmentFiles(a));
-
                 Task.WhenAll(tasks2).Wait();
 
                 progressSimulator.setText("Creating vehicles");
-
-                finished = 0;
+                finished = 0; // starts at 0 and its going to count up later in the code
                 var tasks3 = vehicleList.Select(v => createVehicleFiles(v));
-
                 Task.WhenAll(tasks3).Wait();
 
                 progressSimulator.done();
@@ -101,8 +94,8 @@ namespace LynkApi
                 try
                 {
                     File.WriteAllText(file, JsonConvert.SerializeObject(vehicle)); // serialiserar objekten till json
-                    finished++;
-                    progressSimulator.updateText($"Creating vehicles {finished}/{vehicleList.Count} ");
+                    finished++; // adds one
+                    progressSimulator.updateText($"Creating vehicles {finished}/{vehicleList.Count} "); // showes progress number
                 }
                 catch (Exception e) // om en fil ändras av 2 Task samtidigt
                 {
@@ -119,17 +112,13 @@ namespace LynkApi
             {
                 var file = dataDirectyory + "/appointments/" + appointment.AppointmentId + ".json"; // för varje AP lägger vi i AP mappen och AP id samma som ovan med idt och namnet som rad 58
                 File.WriteAllText(file, JsonConvert.SerializeObject(appointment));
-                finished++;
-                progressSimulator.updateText($"Creating appointments {finished}/{appointmentList.Count} ");
+                finished++; // adds one
+                progressSimulator.updateText($"Creating appointments {finished}/{appointmentList.Count} "); // showes progress number
             });
-
-
         }
 
         private static async Task createWorkshopFiles(WorkshopModel workshop)
         {
-
-
             await Task.Run(() =>
             {
                 var appointments = api.GetAppointments(workshop.LocationId).Result; // hämtar alla AP från APIT med location id 
@@ -151,8 +140,8 @@ namespace LynkApi
                 var file = dataDirectyory + "/workshops/" + workshop.LocationId + ".json"; // vi skapar mappen WS, i denna sakapr vi filen workshop.LocationId.json så det vblir typ WS 1 etc som speglar idt på alla WS
                 File.WriteAllText(file, JsonConvert.SerializeObject(workshop)); // ¨till den filen vi skapade ovan lägger vi till och serialisar objektet gör om den modellen vi har till JSON, det är drf vi får det utskrivet och formaterat finare
 
-                finished++;
-                progressSimulator.updateText($"Creating workshops {finished}/{workshops.Count()} ");
+                finished++; // adds one
+                progressSimulator.updateText($"Creating workshops {finished}/{workshops.Count()} "); // showes progress number
             });
         }
     }

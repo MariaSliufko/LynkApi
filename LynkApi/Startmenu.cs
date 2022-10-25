@@ -13,9 +13,9 @@ namespace LynkApi
 {
     public class Startmenu
     {
-        public static void Menu()//Metod
+        public static void Menu()
         {
-            int option = 0;//Start VÄrde 0
+            int option = 0;
 
             bool isInvalidInput = false;
             do
