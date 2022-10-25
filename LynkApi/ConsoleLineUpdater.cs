@@ -30,7 +30,7 @@ namespace LynkApi
             updateText(text);
         }
 
-        public void updateText(string text)
+        public void updateText(string text) // added so it dosent clear justr uppdates the dots
         {
             _text = text;
             Console.Write($"\rCurrent process: {_text}{_dots}");
