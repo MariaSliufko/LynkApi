@@ -20,11 +20,11 @@ namespace LynkApi
                 string jsonString = File.ReadAllText(file); // Read the text from the file
                
                 WorkshopModel obj = JsonConvert.DeserializeObject<WorkshopModel>(jsonString); // Convert the file into WorkshopModel
-                workshops.Add(obj); // lägg till i lista
+                workshops.Add(obj); // Adds into list
             }
 
-            int numerOfAppoinments = 0;
-            var workshopsOrdered = workshops.OrderByDescending(w => w.Appointments.Count());
+            int numerOfAppoinments = 0; // starts at 0
+            var workshopsOrdered = workshops.OrderByDescending(w => w.Appointments.Count()); // counts and orders
 
             foreach (var shop in workshopsOrdered)
             {
@@ -34,6 +34,7 @@ namespace LynkApi
             }
 
             Console.WriteLine("Total numer of Appointments: " + numerOfAppoinments);
+            
             Console.WriteLine("\nPress any key to return to menu");
             Console.ReadKey(true);
             Console.Clear();

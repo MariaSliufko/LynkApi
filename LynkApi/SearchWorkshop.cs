@@ -15,11 +15,11 @@ namespace LynkApi
         {
             Console.WriteLine("Type Workshop ID:");
             string wId = Console.ReadLine(); // skriv in WS id,
-            var dir = dataDirectyory + "/workshops/" + wId + ".json"; // så skapas sökvägen "dirr" döpa om till path, om vi söker på tex 1 så blir sökvägen Workshops.1.json
+            var path = dataDirectyory + "/workshops/" + wId + ".json"; // så skapas sökvägen path, söker på ex 1 = sökväg Workshops.1.json
 
-            if (File.Exists(dir)) // finns denna sökväg / finns denna fil?
+            if (File.Exists(path)) // finns denna sökväg / finns denna fil?
             {
-                using (StreamReader sr = new StreamReader(dir)) // då läser den raden som finns i filen då vi vet att all data står på 1 rad 
+                using (StreamReader sr = new StreamReader(path)) // då läser den raden som finns i filen då vi vet att all data står på 1 rad 
                 {
                     var line = sr.ReadLine();
                     var obj = JObject.Parse(line); //läser in denna linen som ett json objekt, vi parsar den 
