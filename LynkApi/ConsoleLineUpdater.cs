@@ -25,9 +25,14 @@ namespace LynkApi
         }
         public void setText(string text)
         {
-            _text = text;
             _dots = "";
             Console.Clear();
+            updateText(text);
+        }
+
+        public void updateText(string text)
+        {
+            _text = text;
             Console.Write($"\rCurrent process: {_text}{_dots}");
         }
         public void done()

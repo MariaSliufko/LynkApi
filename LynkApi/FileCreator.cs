@@ -21,6 +21,9 @@ namespace LynkApi
         static ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
         static List<AppointmentModel> appointmentList = new List<AppointmentModel>(); // skapar en appointmentList
         static List<VehicleModel> vehicleList = new List<VehicleModel>(); // skapar en vehicleList
+        static ConsoleLineUpdater progressSimulator = new ConsoleLineUpdater();
+        static int finished = 0;
+        static IEnumerable<WorkshopModel> workshops;
 
         public static void FetchDataFromDatabase()
         {
@@ -29,7 +32,6 @@ namespace LynkApi
 
             if (key == "Y")
             {
-                var progressSimulator = new ConsoleLineUpdater();
 
                 Task.Run(() =>
                 {
@@ -38,7 +40,7 @@ namespace LynkApi
 
                 api = new ApiClient(new Uri(baseadress), apiToken);
 
-                var workshops = api.GetWorkshops().Result; // hämtar alla WS
+                workshops = api.GetWorkshops().Result; // hämtar alla WS
 
                 if (!Directory.Exists(dataDirectyory)) // om directoryn inte finns för workshops
                 {
@@ -61,20 +63,23 @@ namespace LynkApi
                     Directory.CreateDirectory(dataDirectyory + "/vehicles"); // så skapar den en map för vehicles
                 }
 
-                progressSimulator.setText("Creating workshops");
+                finished = 0;
+                progressSimulator.setText($"Creating workshops {finished}/{workshops.Count()} ");
 
                 var tasks1 = workshops.Select(w => createWorkshopFiles(w));
 
                 Task.WhenAll(tasks1).Wait();
 
-                progressSimulator.setText("Creating appointments ");
+                progressSimulator.setText("Creating appointments");
 
+                finished = 0;
                 var tasks2 = appointmentList.Select(a => createAppointmentFiles(a));
 
                 Task.WhenAll(tasks2).Wait();
 
                 progressSimulator.setText("Creating vehicles");
 
+                finished = 0;
                 var tasks3 = vehicleList.Select(v => createVehicleFiles(v));
 
                 Task.WhenAll(tasks3).Wait();
@@ -93,29 +98,38 @@ namespace LynkApi
             {
                 var file = dataDirectyory + "/vehicles/" + vehicle.VehicleId + ".json";
 
-                try 
+                try
                 {
                     File.WriteAllText(file, JsonConvert.SerializeObject(vehicle)); // serialiserar objekten till json
+                    finished++;
+                    progressSimulator.updateText($"Creating vehicles {finished}/{vehicleList.Count} ");
                 }
                 catch (Exception e) // om en fil ändras av 2 Task samtidigt
                 {
-                    Console.Error.WriteLine(e.Message);
-                    Console.Error.WriteLine(vehicle);
+                   // Console.Error.WriteLine(e.Message);
+                   // Console.Error.WriteLine(vehicle);
                 }
             });
         }
 
         private static async Task createAppointmentFiles(AppointmentModel appointment)
         {
+
             await Task.Run(() =>
             {
                 var file = dataDirectyory + "/appointments/" + appointment.AppointmentId + ".json"; // för varje AP lägger vi i AP mappen och AP id samma som ovan med idt och namnet som rad 58
                 File.WriteAllText(file, JsonConvert.SerializeObject(appointment));
+                finished++;
+                progressSimulator.updateText($"Creating appointments {finished}/{appointmentList.Count} ");
             });
+
+
         }
 
         private static async Task createWorkshopFiles(WorkshopModel workshop)
         {
+
+
             await Task.Run(() =>
             {
                 var appointments = api.GetAppointments(workshop.LocationId).Result; // hämtar alla AP från APIT med location id 
@@ -136,6 +150,9 @@ namespace LynkApi
                 
                 var file = dataDirectyory + "/workshops/" + workshop.LocationId + ".json"; // vi skapar mappen WS, i denna sakapr vi filen workshop.LocationId.json så det vblir typ WS 1 etc som speglar idt på alla WS
                 File.WriteAllText(file, JsonConvert.SerializeObject(workshop)); // ¨till den filen vi skapade ovan lägger vi till och serialisar objektet gör om den modellen vi har till JSON, det är drf vi får det utskrivet och formaterat finare
+
+                finished++;
+                progressSimulator.updateText($"Creating workshops {finished}/{workshops.Count()} ");
             });
         }
     }
