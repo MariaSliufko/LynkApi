@@ -28,23 +28,23 @@ namespace LynkApi
 
             var Workshop = JsonConvert.SerializeObject(result); // serialiserar objekten till json
 
-            if (!Directory.Exists(dataDirectyory)) // om directoryn inte finns
-            {
-                Directory.CreateDirectory(dataDirectyory); // skapa map
-                File.WriteAllText(dataFile, Workshop); // skriver ut json till filen
-            }
-            else
-            {
-                if (!File.Exists(dataFile)) // om directoryn finns men inte filen
-                {
-                    File.WriteAllText(dataFile, Workshop);
-                }
-                else // om både directory och filen finns
-                {
-                    File.Delete(dataFile);
-                    File.WriteAllText(dataFile, Workshop);
-                }
-            }
+            //if (!Directory.Exists(dataDirectyory)) // om directoryn inte finns
+            //{
+            //    Directory.CreateDirectory(dataDirectyory); // skapa map
+            //    File.WriteAllText(dataFile, Workshop); // skriver ut json till filen
+            //}
+            //else
+            //{
+            //    if (!File.Exists(dataFile)) // om directoryn finns men inte filen
+            //    {
+            //        File.WriteAllText(dataFile, Workshop);
+            //    }
+            //    else // om både directory och filen finns
+            //    {
+            //        File.Delete(dataFile);
+            //        File.WriteAllText(dataFile, Workshop);
+            //    }
+            //}
             string jsonString = File.ReadAllText(dataFile); // datafilen
             var objResponse = JsonConvert.DeserializeObject<List<WorkshopModel>>(jsonString); //skriver om JSON till .NET objekt
 

@@ -118,7 +118,7 @@ namespace LynkApi
         {
             await Task.Run(() =>
             {
-                var appointments = api.GetAppointments(workshop.LocationId).Result;   // hämtar alla AP från APIT med location id 
+                var appointments = api.GetAppointments(workshop.LocationId).Result; // hämtar alla AP från APIT med location id 
 
                 lock (appointmentList)
                 {

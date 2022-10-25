@@ -12,9 +12,8 @@ namespace TestLynk
     {
         static void Main(string[] args)
         {
-           Startmenu start = new Startmenu();//Kallar på metoden för start meny.
-           start.Start();//Kallar på metoden för att starta menyn.
-
+           Startmenu start = new Startmenu();
+           start.Start();
         }
     }
 }
