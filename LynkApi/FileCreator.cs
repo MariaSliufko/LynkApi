@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace LynkApi
         static string dataDirectyory = Path.Combine(Path.GetDirectoryName((typeof(Program).Assembly.Location)) ?? string.Empty, "data"); // skapar filvägen C:/documents/maria/github/lykapi/bin + /data
                                                                                           
         static string baseadress = "https://context-qa.lynkco.com/api/workshop/";
-        static string apiToken = "y2TpY8nt029M~OC3NdK7tXnpF"; // "API_TOKEN"; Not able to use API_TOKEN to replace api token
+        static string apiToken = ConfigurationManager.AppSettings["api_key"];
         static ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
         static List<AppointmentModel> appointmentList = new List<AppointmentModel>(); // skapar en appointmentList
         static List<VehicleModel> vehicleList = new List<VehicleModel>(); // skapar en vehicleList
