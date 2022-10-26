@@ -17,7 +17,7 @@ namespace LynkApi
         public static void Appointments()
         {
             var baseadress = "https://context-qa.lynkco.com/api/workshop/";
-            var apiToken = ConfigurationManager.AppSettings["api_key"];//"y2TpY8nt029M~OC3NdK7tXnpF";
+            var apiToken = ConfigurationManager.AppSettings["api_key"];
             ApiClient api = new ApiClient(new Uri(baseadress), apiToken);
 
             Console.WriteLine("Enter location id to view it's appointments: ");
