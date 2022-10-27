@@ -8,19 +8,20 @@ namespace LynkApi
 {
     public class ConsoleLineUpdater
     {
-        private string _text = "";
+        private string _text = ""; //Empty string
         private string _dots = "";
         private bool _done = false;
         public void start(string text)
         {
-            Console.Clear();
+            Console.Clear(); //used to clear screen and console buffer
             _text = text;
             _dots = "";
             while (!_done)
             {
                 _dots += ". ";
                 Console.Write($"\rCurrent process: {_text}{_dots}");
-                Thread.Sleep(500);
+                Thread.Sleep(500); //temporarily suspends the current execution of the thread for specified milliseconds,
+                                   //so that other threads can get the chance to start the execution
             }
         }
         public void setText(string text)
@@ -30,7 +31,7 @@ namespace LynkApi
             updateText(text);
         }
 
-        public void updateText(string text) // added so it dosent clear justr uppdates the dots
+        public void updateText(string text) // added so it dosent clear just uppdates the dots
         {
             _text = text;
             Console.Write($"\rCurrent process: {_text}{_dots}");
@@ -39,7 +40,7 @@ namespace LynkApi
         {
             _done = true;
             Console.Clear();
-            Console.Write($"\rCurrent process: DONE!");
+            Console.Write($"\rCurrent process: DONE!"); // \moves cursor back to beginning of line to overwrite with new content
             Console.WriteLine();
 
             Console.WriteLine("\nPress any key to return to menu");
