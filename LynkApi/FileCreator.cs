@@ -25,7 +25,7 @@ namespace LynkApi
         static ConsoleLineUpdater progressSimulator = new ConsoleLineUpdater();
         static int finished = 0;
         static IEnumerable<WorkshopModel> workshops;
-
+        
         public static void FetchDataFromDatabase()
         {
             Console.WriteLine("Confirm if you want to download and uppdate all data by typing Y: ");
@@ -33,12 +33,16 @@ namespace LynkApi
 
             if (key == "Y")
             {
+                Console.WriteLine("Enter you're key");
+                string token = Console.ReadLine();
+
+          
                 Task.Run(() =>
                 {
                     progressSimulator.start("Connecting to API");
                 });
 
-                api = new ApiClient(new Uri(baseadress), apiToken);
+                api = new ApiClient(new Uri(baseadress), token);
 
                 workshops = api.GetWorkshops().Result; // hämtar alla WS
 
