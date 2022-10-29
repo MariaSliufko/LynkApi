@@ -33,10 +33,19 @@ namespace LynkApi
 
             if (key == "Y")
             {
-                Console.WriteLine("Enter you're key");
+                Console.WriteLine("Enter you're key or just press enter for default key");
                 string token = Console.ReadLine();
 
-          
+                if (token != "")
+                {
+                    token = token;
+                }
+                else
+                {
+                    token = apiToken;
+                }
+
+
                 Task.Run(() =>
                 {
                     progressSimulator.start("Connecting to API");
