@@ -25,6 +25,7 @@ namespace LynkApi
 
             int numerOfAppoinments = 0; // starts at 0
             var workshopsOrdered = workshops.OrderByDescending(w => w.Appointments.Count()); // counts and orders
+            Console.WriteLine("Total numer of Appointments: " + numerOfAppoinments);
 
             foreach (var shop in workshopsOrdered)
             {
@@ -34,7 +35,7 @@ namespace LynkApi
             }
 
             Console.WriteLine("Total numer of Appointments: " + numerOfAppoinments);
-            
+
             Console.WriteLine("\nPress any key to return to menu");
             Console.ReadKey(true);
             Console.Clear();
