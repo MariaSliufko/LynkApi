@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LynkApi
 {
@@ -46,5 +47,13 @@ namespace LynkApi
     {
         [JsonProperty("items")] //workshopList innehåller en lista med propertys från klassen workshop.
         public List<WorkshopModel>? WorkshopList { get; set; }
+        public string Next { get; set; }
+        public WorkshopJSON(List<WorkshopModel>? workshopList, string next)
+        {
+            WorkshopList = workshopList;
+            Next = next;
+        }
     }
+    
+
 }

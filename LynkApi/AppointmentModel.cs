@@ -80,6 +80,14 @@ namespace LynkApi
         {
             [JsonProperty("items")]
             public List<AppointmentModel>? AppointmentList { get; set; }
+
+            public string Next { get; set; }
+
+            public AppointmentJSON(List<AppointmentModel>? appointmentList, string next) //constructor for list and next
+            {
+                AppointmentList = appointmentList;
+                Next = next;
+            }
         }
     }
 }
