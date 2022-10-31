@@ -47,7 +47,7 @@ namespace LynkApi
                 var relative = "locations/?all";
                 if (next != null)
                 {
-                    relative += "next" + next;
+                    relative += "next=" + next;
                 }
 
                 var workshopUri = new Uri(BaseAddress, relative);
@@ -83,7 +83,7 @@ namespace LynkApi
                 var relative ="vehicles/?location=" + workshopId + "&all";
                 if (next != null)
                 {
-                    relative += "&next" + next;
+                    relative += "&next=" + next;
                 }
 
                 var appointmentUri = new Uri(BaseAddress, relative);
