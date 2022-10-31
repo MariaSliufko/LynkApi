@@ -31,63 +31,114 @@ namespace LynkApi
 
         public HttpClient Client { get; } //properties
         public Uri BaseAddress { get; }
-        public string Query { get; } //?
-        
+        public string Query { get; }
+        public string Next { get; set; } = string.Empty;
+        string? next = null;
+
         public async Task<IEnumerable<WorkshopModel>?> GetWorkshops() //async makes sure that our website doesnt lock up. IEnumerable supports a simple iteration over a (non-generic) collection.
         {
-            //variabel workshopUri
-            var workshopUri = new Uri(BaseAddress, "locations/?all"); //puts together baseadress and endpoint
-            
-            using (HttpResponseMessage response = await Client.GetAsync(workshopUri)) //new call/request from our api client and wait for response
-            {
-                if (response.IsSuccessStatusCode) //If successfull do something with it (read the data that came back)
-                {
-                    string json = await response.Content.ReadAsStringAsync(); //awaits the response and content is the content of my request
-                    var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json); //deserialize 
-                    return myWorkshops?.WorkshopList;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
-            }
-        }
+            var list = new List<WorkshopModel>();
+            //string? next = null;
 
-        public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId) // get V metoden 
-        {
-            var appointmentUri = new Uri(BaseAddress, "vehicles/?location=" + workshopId + "&all");
+            do
+            {
+                //variabel workshopUri
+                // var workshopUri = new Uri(BaseAddress, "locations/?all"); //puts together baseadress and endpoint
+                var relative = "locations/?all";
+                if (next != null)
+                {
+                    relative += "next" + next;
+                }
 
-            using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
-            {
-                if (response.IsSuccessStatusCode)
+                var workshopUri = new Uri(BaseAddress, relative);
+                using (HttpResponseMessage response = await Client.GetAsync(workshopUri)) //new call/request from our api client and wait for response
                 {
-                    string json = await response.Content.ReadAsStringAsync();
-                    var myVechicles = JsonConvert.DeserializeObject<VehicleJSON>(json);
-                    return myVechicles?.VehicleList; //returns list of vehicles
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase); //initializes a new instance of exception class with response phrase sent by server and statuscode.
-                }
-            }
-        }
-        public async Task<IEnumerable<AppointmentModel>?> GetAppointments(string workshopId)
-        {
-            var appointmentUri = new Uri(BaseAddress, "appointments/?location=" + workshopId + "&all");
-            
-            using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
-            {
-                    if (response.IsSuccessStatusCode)
+                    if (response.IsSuccessStatusCode) //If successfull do something with it (read the data that came back)
                     {
-                        string json = await response.Content.ReadAsStringAsync();
-                        var myAppointments = JsonConvert.DeserializeObject<AppointmentJSON>(json);
-                        return myAppointments?.AppointmentList;
+                        string json = await response.Content.ReadAsStringAsync(); //awaits the response and content is the content of my request
+                        var myWorkshops = JsonConvert.DeserializeObject<WorkshopJSON>(json); //deserialize 
+                        //return myWorkshops?.WorkshopList;
+
+                        list.AddRange(myWorkshops.WorkshopList);
+                        next = myWorkshops.Next;
                     }
                     else
                     {
                         throw new Exception(response.ReasonPhrase);
                     }
-            }
+                }
+            } while (next != null);
+        
+
+            return list;
+            
+        }
+
+        public async Task<IEnumerable<VehicleModel>?> GetVehicles(string workshopId) // get V metoden 
+        {
+            var list = new List<VehicleModel>();
+
+            do
+            {
+                var relative ="vehicles/?location=" + workshopId + "&all";
+                if (next != null)
+                {
+                    relative += "&next" + next;
+                }
+
+                var appointmentUri = new Uri(BaseAddress, relative);
+                using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string json = await response.Content.ReadAsStringAsync();
+                        var myVechicles = JsonConvert.DeserializeObject<VehicleJSON>(json);
+                        // return myVechicles?.VehicleList; //returns list of vehicles
+
+                        list.AddRange(myVechicles.VehicleList);
+                        next = myVechicles.Next;
+                    }
+                    else
+                    {
+                        throw new Exception(response.ReasonPhrase); //initializes a new instance of exception class with response phrase sent by server and statuscode.
+                    }
+                }
+            } while (next != null);
+            return list;
+        }
+        
+        public async Task<IEnumerable<AppointmentModel>?> GetAppointments(string workshopId)
+        {
+            var list = new List<AppointmentModel>(); //adds empty list
+           // string? next = null;
+
+            do
+            {
+                var relative = "appointments/?location=" + workshopId + "&all";
+                if (next != null)
+                {
+                    relative += "&next=" + next;
+                }
+
+                var appointmentUri = new Uri(BaseAddress, relative); //
+                using (HttpResponseMessage response = await Client.GetAsync(appointmentUri))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string json = await response.Content.ReadAsStringAsync();
+                        var myAppointments = JsonConvert.DeserializeObject<AppointmentJSON>(json);
+
+                        list.AddRange(myAppointments.AppointmentList);
+                        next = myAppointments.Next;
+                    }
+                    else
+                    {
+                        throw new Exception(response.ReasonPhrase);
+                    }
+                }
+            } while (next != null);
+
+            return list;
         }
     }
 }
